@@ -5,44 +5,63 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>CloteShoe</title>
-        <link rel="stylesheet" href="dist/css/hamburgerIcon.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+	rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="dist/css/hamburgerIcon.min.css" />
 <link rel="stylesheet" href="dist/css/style.min.css" />
+
 	</head>
 	<body>
-		
-<nav>
-    <div class="wrapper nav__line">
-       
-        <button class="burger-btn">
-            <div class="burger-btn__box">
-                <div class="burger-btn__bars"></div>
-            </div>
+		<nav class="color">
+	<div class="wrapper nav__line">
+		<button class="burger-btn">
+			<div class="burger-btn__box">
+				<div class="burger-btn__bars"></div>
+			</div>
+		</button>
+
+		<a href="#" class="nav__title">
+			<img src="dist/img/icon/logo.svg" alt="" /> <p>CloteShoe</p>
+		</a>
+        <button class="nav__shopCart">
+            <img src="dist/img/icon/shopping-cart.svg" alt="">
         </button>
-
-        <a href="#" class="nav__title">
-            <img src="dist/img/icon/logo.svg" alt="">
-        </a>
-
-
         
-    </div>
-    <div class="nav">
-        <div class="nav__items">
-            <a href="#" class="nav__item">item</a>
-            <a href="#" class="nav__item">item</a>
-            <a href="#" class="nav__item">item</a>
-            <a href="#" class="nav__item">item</a>
+        <div class="menu-item">
+            <ul class="nav__items dropdown">
+                <li><a href="" class="nav__item">Najlepszy produkt</a></li>
+                <li><a href="" class="nav__item">Wszystkie produkty</a></li>
+                <li><a href="" class="nav__item">O nas</a></li>
+                <li><a href="" class="nav__item">Kontakt</a></li>
+            </ul>
         </div>
-    </div>
+	</div>
 </nav>
 
-		
 
-        <footer>
+		<header id="home" class="header">
+			<div class="hero-img">
+				<div class="hero-shadow"></div>
+				<div class="hero-text">
+					<h1 class="main-color">Najlepsze ciuchy</h1>
+					<p>Znajdziesz już tylko u nas!</p>
+					<a href="#aboutus" type="button" class="btn btn-outline-light"
+						>Produkty
+						<img src="dist/img/icon/arrow.svg" alt="" />
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<footer>
     
 </footer>
 		
 <script src="dist/js/hamburgerIcon.min.js"></script>
 	</body>
 </html>
-
