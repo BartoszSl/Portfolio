@@ -16,6 +16,7 @@ html {
 body {
 	background-color: $primary-bgc;
 	font-size: 1.6rem;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper {
@@ -24,81 +25,176 @@ body {
 	width: 100%;
 }
 
+.shadow-bg {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.main-color {
+	color: $primary-color;
+}
+
 // Navigation
 
 .nav {
-	position: fixed;
-	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	transform: translateX(100%);
 	transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
-	background-color: #59b90e;
-	z-index: 100;
-
 	&__line {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: white;
-
 		position: fixed;
 		top: 0;
-        left: 50%;
-        transform: translate(-50%);
-		z-index: 1000;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%);
+		padding: 0.5em 1.7rem;
+		z-index: 100;
 	}
-}
-.nav--active {
-	transform: translateX(0);
-}
-.nav__item {
-	position: relative;
-	display: block;
-	margin: 0.5em 0;
-	padding: 0.5em 2em;
-	font-size: 2.8rem;
-	color: white;
-	text-decoration: none;
-}
-.nav__item::before {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 3px;
-	height: 100%;
-	transform: scaleY(0);
-	background-color: white;
-	transition: transform 0.3s;
-	content: '';
-}
-.nav__item:hover::before {
-	-webkit-transform: scaleY(1);
-	transform: scaleY(1);
-}
-.nav__title {
-	position: fixed;
-	top: 20px;
-	left: 10px;
-	padding: 1em;
-	border: 1px solid transparent;
-	font-size: 2rem;
-	font-weight: 700;
-	z-index: 10;
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
+
+	&__title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.1rem;
+		margin-right: 1.1rem;
+		font-size: 1.8rem;
+		img {
+			width: 25px;
+		}
+		p {
+			font-weight: 700;
+			color: white;
+		}
+	}
+	&__shopCart {
+		position: relative;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		img {
+			width: 1.8rem;
+		}
+		&::after {
+			display: none;
+			position: absolute;
+			right: -0.2rem;
+			height: 0.7em;
+			width: 0.7em;
+			border-radius: 4px;
+			content: '';
+			background-color: $red-color;
+		}
+	}
 }
 
-@keyframes navItemsAnimation {
-	from {
-		transform: translateX(200%);
+ul {
+	list-style: none;
+	font-size: 24px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 100%;
+	line-height: 3rem;
+	background-color: $primary-bgc;
+	width: 100%;
+	transform: translateY(-200%);
+	transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	margin-left: -1.78rem;
+	padding: 0.5em;
+	text-align: center;
+	// animation: dropdown 1s forwards;
+	a {
+		font-weight: 700;
+		font-size: 1.3rem;
+		color: black;
+		transition: color 0.3s;
 	}
-	to {
-		transform: translateX(0);
+
+	a:hover {
+		color: $primary-color;
 	}
 }
-.nav-items-animation {
-	animation: navItemsAnimation 1s both;
+
+.menu-item--active {
+	transform: translateY(0);
+}
+
+// Header
+
+header {
+	color: white;
+
+	h1 {
+		font-size: 2.8rem;
+	}
+
+	p {
+		font-size: 2.2rem;
+		margin: 0.5rem 0 2rem 0;
+	}
+
+	.hero-img {
+		position: relative;
+		height: 100vh;
+		background-image: url('../img/shoe-bg-small.jpg');
+		background-position: top;
+		background-size: cover;
+		background-attachment: fixed;
+		z-index: 0;
+	}
+
+	.hero-shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.85);
+		z-index: -10;
+	}
+
+	.hero-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		padding: 2rem;
+		z-index: 5;
+		.btn {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			width: 100px;
+			height: 35px;
+			background-color: $primary-bgc;
+			border-radius: 1px;
+			color: black;
+			font-size: 1.4rem;
+			img {
+				width: 16px;
+			}
+			&::after {
+				position: absolute;
+				right: -3px;
+				bottom: -3px;
+				width: 100%;
+				height: 100%;
+				content: '';
+				border: 1px solid $primary-bgc;
+				border-radius: 1px;
+			}
+		}
+	}
 }
