@@ -51,7 +51,7 @@ body {
 		top: 0;
 		left: 50%;
 		transform: translate(-50%);
-		padding: 0.5em 1.7rem;
+		padding: 1em 1.7rem;
 		z-index: 100;
 	}
 
@@ -79,13 +79,19 @@ body {
 			width: 1.8rem;
 		}
 		&::after {
+			// display: flex;
 			display: none;
+			align-items: center;
+			justify-content: center;
 			position: absolute;
+			color: white;
 			right: -0.2rem;
-			height: 0.7em;
-			width: 0.7em;
-			border-radius: 4px;
-			content: '';
+			top: 0;
+			height: 1.2em;
+			width: 1.2em;
+			font-size: 0.8rem;
+			border-radius: 1em;
+			content: '1';
 			background-color: $red-color;
 		}
 	}
@@ -114,7 +120,8 @@ a {
 	margin-left: -1.78rem;
 	padding: 0.5em;
 	text-align: center;
-	// animation: dropdown 1s forwards;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
 	a {
 		font-weight: 700;
 		font-size: 1.3rem;
@@ -194,6 +201,147 @@ header {
 				content: '';
 				border: 1px solid $primary-bgc;
 				border-radius: 1px;
+			}
+		}
+	}
+}
+
+// Media
+
+@media (min-width: 576px) {
+	.nav {
+		&__title {
+			font-size: 2rem;
+		}
+		&__shopCart {
+			img {
+				width: 2rem;
+			}
+			&::after {
+				height: 1.3em;
+				width: 1.3em;
+				font-size: 0.9rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	body .wrapper {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
+
+	.nav {
+		&__title {
+			font-size: 2.8rem;
+			img {
+				width: 40px;
+			}
+		}
+		&__shopCart {
+			img {
+				width: 3rem;
+			}
+			&::after {
+				height: 1.2em;
+				width: 1.2em;
+				font-size: 1.2rem;
+				padding-bottom: 0.3em;
+			}
+		}
+	}
+
+	.menu-item {
+		margin-left: -5.08rem;
+		line-height: 3.5rem;
+		a {
+			font-size: 1.6rem;
+		}
+	}
+
+	header {
+		h1 {
+			font-size: 4.8rem;
+		}
+
+		p {
+			font-size: 2.6rem;
+		}
+
+		.hero-img {
+			background-image: url('../img/shoe-bg-big.jpg');
+		}
+
+		.hero-text {
+			.btn {
+				gap: 1rem;
+				width: 160px;
+				height: 45px;
+				font-size: 2rem;
+				img {
+					width: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.nav {
+		&__title {
+			gap: 2rem;
+			margin-right: 2rem;
+			font-size: 4.8rem;
+			img {
+				width: 60px;
+			}
+		}
+		&__shopCart {
+			img {
+				width: 4rem;
+			}
+			&::after {
+				right: -0.7rem;
+				width: 1.4em;
+				height: 1.4em;
+				font-size: 1.4rem;
+			}
+		}
+	}
+
+	.menu-item {
+		line-height: 6rem;
+
+		a {
+			font-size: 2.6rem;
+		}
+	}
+
+	header {
+		h1 {
+			font-size: 6.4rem;
+		}
+
+		p {
+			font-size: 3.2rem;
+			margin: 1rem 0 4rem 0;
+		}
+
+		.hero-text {
+			.btn {
+				gap: 2rem;
+				width: 230px;
+				height: 60px;
+
+				font-size: 2.8rem;
+				img {
+					width: 30px;
+				}
+				&::after {
+					right: -5px;
+					bottom: -5px;
+				}
 			}
 		}
 	}
