@@ -1,6 +1,5 @@
 /* Hamburger menu style */
 
-
 .burger-btn {
 	background: none;
 	border: 1px solid transparent;
@@ -22,7 +21,7 @@
 .burger-btn__bars::before {
 	position: absolute;
 	left: 0;
-	height: 2px;
+	height: 3px;
 	border-radius: 2px;
 	content: '';
 	background-color: white;
@@ -45,4 +44,42 @@
 .black-bars-color::after,
 .black-bars-color::before {
 	background-color: white;
+}
+
+@media (min-width: 768px) {
+	.burger-btn__box {
+		width: 35px;
+		height: 20px;
+	}
+	.burger-btn__bars,
+	.burger-btn__bars::after,
+	.burger-btn__bars::before {
+		height: 4px;
+	}
+
+	.burger-btn__bars::after {
+		top: 10px;
+	}
+	.burger-btn__bars::before {
+		top: 20px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.burger-btn__box {
+		width: 45px;
+		height: 30px;
+	}
+	.burger-btn__bars,
+	.burger-btn__bars::after,
+	.burger-btn__bars::before {
+		height: 5px;
+	}
+
+	.burger-btn__bars::after {
+		top: 13px;
+	}
+	.burger-btn__bars::before {
+		top: 27px;
+	}
 }
