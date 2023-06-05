@@ -462,7 +462,7 @@ header {
 	}
 }
 
-.aboutus {
+.information {
 	&__content {
 		display: flex;
 		flex-direction: column;
@@ -495,6 +495,63 @@ header {
 					transform: translateY(0);
 					background-color: $cta-color;
 				}
+			}
+		}
+
+		&-form {
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+			margin-top: 2.5rem;
+			margin-bottom: 4rem;
+			padding-right: 6rem;
+			input,
+			textarea {
+				width: 100%;
+				padding: 1rem;
+				border-radius: 0.5rem;
+				border: 1px solid black;
+				background: none;
+			}
+			.top {
+				display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+			}
+			.label-input {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				input ~ label,
+				textarea ~ label {
+					position: absolute;
+					top: 0.4rem;
+					left: 0.8rem;
+					padding-inline: 0.25rem;
+				}
+				textarea {
+					min-width: 100%;
+					max-width: 100%;
+				}
+				input ~ label,
+				textarea ~ label {
+					top: -0.75rem;
+					left: 2rem;
+					background-color: $primary-bgc;
+					font-size: 1rem;
+				}
+			}
+
+			button {
+				width: 10rem;
+				padding: 0.5rem 0;
+				border: none;
+				font-size: 1.4rem;
+				font-weight: 700;
+				border-radius: 5px;
+				background-color: $cta-color;
+				color: white;
+				cursor: pointer;
 			}
 		}
 	}
@@ -600,11 +657,36 @@ header {
 		}
 	}
 
-	.aboutus {
+	.information {
 		&__content {
 			gap: 2.5rem;
 			p {
 				font-size: 1.8rem;
+			}
+			&-form {
+				gap: 3rem;
+				margin-top: 3rem;
+				margin-bottom: 5rem;
+				padding-right: 6rem;
+				input,
+				textarea {
+					font-size: 1.8rem;
+				}
+				.label-input {
+					input ~ label,
+					textarea ~ label {
+						top: -0.9rem;
+						background-color: $primary-bgc;
+						font-size: 1.2rem;
+						padding-inline: 0.25rem;
+					}
+				}
+	
+				button {
+					width: 12.5rem;
+					padding: 0.75rem 0;
+					font-size: 1.6rem;
+				}
 			}
 		}
 	}
@@ -754,12 +836,35 @@ header {
 		}
 	}
 
-	.aboutus {
+	.information {
 		&__content {
 			gap: 3rem;
 			padding-right: 4rem;
 			p {
 				font-size: 2.4rem;
+			}
+			&-form {
+				gap: 3.5rem;
+				margin-top: 3.5rem;
+				margin-bottom: 6rem;
+				padding-right: 8rem;
+				input,
+				textarea {
+					font-size: 2rem;
+				}
+				.label-input {
+					input ~ label,
+					textarea ~ label {
+						top: -0.9rem;
+						font-size: 1.4rem;
+					}
+				}
+	
+				button {
+					width: 12.5rem;
+					padding: 0.75rem 0;
+					font-size: 1.8rem;
+				}
 			}
 		}
 	}
@@ -852,10 +957,34 @@ header {
 			}
 		}
 	}
-	.aboutus {
+	.information {
 		&__content {
 			p {
 				font-size: 3rem;
+			}
+			&-form {
+				gap: 4rem;
+				margin-top: 4rem;
+				margin-bottom: 7rem;
+				padding-right: 10rem;
+				input,
+				textarea {
+					font-size: 2.2rem;
+					padding: 1.5rem;
+				}
+				.label-input {
+					input ~ label,
+					textarea ~ label {
+						top: -0.9rem;
+						font-size: 1em;
+					}
+				}
+	
+				button {
+					width: 15rem;
+					padding: 0.75rem 0;
+					font-size: 2rem;
+				}
 			}
 		}
 	}
@@ -1008,11 +1137,48 @@ header {
 			}
 		}
 	}
-	.aboutus {
+	.information {
 		&__content {
 			gap: 5rem;
 			p {
 				font-size: 3.8rem;
+			}
+			&-form {
+				gap: 4rem;
+				margin-top: 4rem;
+				margin-bottom: 7rem;
+				padding-right: 10rem;
+				input,
+				textarea {
+					font-size: 2.2rem;
+					padding: 1.5rem;
+				}
+				.top {
+					flex-direction: row;
+					justify-content: space-between;
+					width: 100%;
+					input {
+						width:160%;
+					}
+					.label-input:nth-child(2) {
+						margin-right: 33%;
+						transform: translate(50%);
+					}
+				}
+
+				.label-input {
+					input ~ label,
+					textarea ~ label {
+						top: -0.9rem;
+						font-size: 1em;
+					}
+				}
+	
+				button {
+					width: 20rem;
+					padding: 1rem 0;
+					font-size: 2.4rem;
+				}
 			}
 		}
 	}
