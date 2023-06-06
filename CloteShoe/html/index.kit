@@ -14,7 +14,7 @@
 			<div class="hero-img">
 				<div class="hero-shadow"></div>
 				<div class="wrapper hero-text">
-					<h1 class="main-color">Najlepsze ciuchy</h1>
+					<h2 class="main-color">Oferujemy <span class="header-text"></span> </h2>
 					<p>Znajdziesz już tylko u nas!</p>
 					<a href="#aboutus" type="button" class="btn btn-outline-light"
 						>Produkty
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</header>
-
+		
 		<main>
 			<section class="section best">
 				<div class="wrapper">
@@ -71,12 +71,13 @@
 									href="#aboutus"
 									type="button"
 									class="section__cart-btn btn-outline-light"
-									>Czytaj więcej
+									><span>Czytaj więcej</span>
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- @include 'cart.kit' -->
 			</section>
 
 			<section class="section all">
@@ -88,6 +89,10 @@
 
 						<button class="all__cart-btn back-btn">
 							<i class="fa-solid fa-arrow-left"></i>
+						</button>
+
+						<button class="all__cart-btn next-btn">
+							<i class="fa-solid fa-arrow-right"></i>
 						</button>
 
 						<div class="all__items-item">
@@ -107,16 +112,14 @@
 											href="#aboutus"
 											type="button"
 											class="section__cart-btn btn-outline-light"
-											>Czytaj więcej
+											><span>Czytaj więcej</span>
 										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<button class="all__cart-btn next-btn">
-							<i class="fa-solid fa-arrow-right"></i>
-						</button>
+						
 
 				</div>
 			</section>
@@ -161,18 +164,18 @@
 						<form action="" class="information__content-form">
 							<div class="top">
 								<div class="label-input">
-									<input class="small-input input" type="text" id="first_name" name="first_name" placeholder="Bartek">
+									<input class="small-input input" type="text" id="first_name" name="first_name" placeholder="Bartek" required>
 									<label for="first_name">Imie</label>
 								</div>
 	
 								<div class="label-input">
-									<input class="small-input input" type="email" id="eMail" name="eMail" placeholder="uzytkownikStrony@mail.com">
+									<input class="small-input input" type="email" id="eMail" name="eMail" placeholder="uzytkownikStrony@mail.com" required>
 									<label for="eMail">E-mail</label>
 								</div>
 							</div>
 
 							<div class="label-input">
-								<textarea class="input" name="description" id="description" cols="30" rows="10" placeholder="Mam problem z kodem rabatowym. KOD “Tes” nie działa poprawnie bo ..."></textarea>
+								<textarea class="input" name="description" id="description" cols="30" rows="10" placeholder="Mam problem z kodem rabatowym. KOD “Tes” nie działa poprawnie bo ..." required></textarea>
 								<label for="description">Treść</label>
 							</div>
 
