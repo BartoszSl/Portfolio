@@ -1,0 +1,238 @@
+@use 'colors' as *;
+
+.shadow {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.cart {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 33rem;
+	height: 40rem;
+	background-color: white;
+	border-radius: 1rem;
+	overflow: hidden;
+	z-index: 100;
+
+	.content {
+		width: 100%;
+		height: 100%;
+		.top {
+			display: flex;
+			img {
+				width: 15rem;
+				height: 18rem;
+				border-bottom-right-radius: 1rem;
+			}
+			.informations {
+				display: flex;
+				flex-direction: column;
+				padding-left: 1.5rem;
+				padding-right: 2.5rem;
+				padding-top: 2.6rem;
+				gap: 2rem;
+				font-size: 1em;
+				color: $footer-color;
+				span {
+					color: black;
+					font-weight: 500;
+				}
+				.top-inf,
+				.bottom-inf {
+					display: flex;
+					flex-direction: column;
+					gap: 1.2rem;
+				}
+				.last {
+					font-size: 1rem;
+					.lastPrize {
+						font-weight: 700;
+						color: $footer-color;
+					}
+				}
+				.bottom-inf {
+					.fastBuy {
+						font-size: 0.8rem;
+						.time {
+							color: $primary-color;
+						}
+					}
+					.buttons {
+						display: flex;
+						gap: 0.5rem;
+						button {
+							padding: 0.5rem 2rem;
+							border-radius: 0.5rem;
+							font-weight: 700;
+							color: white;
+							background-color: $cta-color;
+							border: none;
+							cursor: pointer;
+						}
+						button:nth-child(2) {
+							padding: 0.5rem 1rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.cart {
+		width: 40rem;
+		height: 50rem;
+		.content {
+			.top {
+				img {
+					width: 20rem;
+					height: 22rem;
+				}
+				.informations {
+					padding-left: 2.5rem;
+					padding-top: 2.6rem;
+					gap: 2rem;
+					font-size: 1.2em;
+					.top-inf,
+					.bottom-inf {
+						gap: 1.2rem;
+					}
+					.last {
+						font-size: 1.2rem;
+					}
+					.bottom-inf {
+						.fastBuy {
+							font-size: 1rem;
+						}
+						.buttons {
+							gap: 1rem;
+							button {
+								font-size: 1.6rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.cart {
+		width: 50rem;
+		height: 60rem;
+		.content {
+			.top {
+				img {
+					width: 24rem;
+					height: 26rem;
+				}
+				.informations {
+					padding-left: 3rem;
+					padding-top: 2.6rem;
+					gap: 2rem;
+					font-size: 1.4em;
+					.top-inf,
+					.bottom-inf {
+						gap: 1.6rem;
+					}
+					.last {
+						font-size: 1.4rem;
+					}
+					.bottom-inf {
+						.fastBuy {
+							font-size: 1.2rem;
+						}
+						.buttons {
+							gap: 1.4rem;
+							button {
+								font-size: 2.2rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.cart {
+		width: 55rem;
+		.content {
+			.top {
+				img {
+					width: 24rem;
+					height: 28rem;
+				}
+				.informations {
+					padding-left: 4rem;
+					padding-top: 3rem;
+					font-size: 1.8em;
+					.bottom-inf {
+						.buttons {
+							gap: 1.6rem;
+							button {
+                                padding: 0.6rem 2.25rem;
+								font-size: 2.5rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.cart {
+		width: 75rem;
+		height: 70rem;
+		.content {
+			.top {
+				img {
+					width: 31rem;
+					height: 34rem;
+				}
+				.informations {
+					padding-left: 7rem;
+					padding-top: 4rem;
+                    padding-right: 10rem;
+					gap: 4rem;
+					font-size: 2.4em;
+					.top-inf,
+					.bottom-inf {
+						gap: 2rem;
+					}
+					.last {
+						font-size: 1.8rem;
+					}
+					.bottom-inf {
+						.fastBuy {
+							font-size: 1.4rem;
+						}
+						.buttons {
+							gap: 2rem;
+							button {
+								font-size: 2.8rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
