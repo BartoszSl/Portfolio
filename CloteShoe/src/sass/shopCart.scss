@@ -47,6 +47,10 @@
 				gap: 2rem;
 				font-size: 1em;
 				color: $footer-color;
+				.name {
+					color: $footer-color;
+					font-weight: 700;
+				}
 				span {
 					color: black;
 					font-weight: 500;
