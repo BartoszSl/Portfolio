@@ -13,7 +13,11 @@ const allImg = document.querySelector('.allImg');
 const contentTitle = document.querySelector('.content-title');
 const allPrize = document.querySelector('.all-prize');
 const allLocation = document.querySelector('.all-location');
-const textInBottom = document.querySelector('.down-text')
+const textInBottom = document.querySelector('.down-text');
+const addToBuy = document.querySelector('.addToBuy');
+const addNewItem = document.querySelector('.addNewItem');
+const itemSlot = document.querySelector('.item-slot')
+const bestBtn = document.querySelector('.best-btn')
 
 let isBlocked = false;
 let clickCount = 0;
@@ -43,7 +47,7 @@ const allData = {
 			prize: 13,
 			location: 'German',
 			type: 'Basic',
-			text: '',
+			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ipsa quos nemo impedit ea sint iste consequuntur non veritatis delectus.',
 			img: '/dist/img/czapkaZDaszkiem.jpg',
 			alt: 'Czapka',
 		},
@@ -52,7 +56,7 @@ const allData = {
 			prize: 45,
 			location: 'France',
 			type: 'Tactical',
-			text: '',
+			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In veritatis minus, expedita nostrum blanditiis mollitia corporis recusandae sequi commodi laudantium neque! Aspernatur, pariatur nobis! Reprehenderit impedit eveniet aperiam ab rem.',
 			img: '/dist/img/plecak.jpg',
 			alt: 'Plecak',
 		},
@@ -76,6 +80,26 @@ const listenerEvents = () => {
 	cartShadow.addEventListener('click', closeCart);
 	nextBtn.addEventListener('click', addID);
 	backBtn.addEventListener('click', subtractID);
+	addToBuy.addEventListener('click', addItem);
+	bestBtn.addEventListener('click', handleBestData)
+};
+
+let itemAmount = 0;
+
+const addItem = () => {
+	itemAmount++;
+	itemSlot.textContent = itemAmount;
+	if (itemAmount == 0) {
+		addNewItem.classList.remove('addNewItemAnimation');
+	}
+	if(itemAmount >= 10) {
+		itemSlot.textContent = "9+";
+	}
+	addToBuy.classList.add('addToBuyAnimation');
+	setTimeout(() => {
+		addToBuy.classList.remove('addToBuyAnimation');
+		addNewItem.classList.add('addNewItemAnimation');
+	}, 700);
 };
 
 let idCart = 1;
@@ -99,6 +123,7 @@ const subtractID = () => {
 };
 
 const handleData = () => {
+	// Cart
 	img.setAttribute('src', allData.id[idCart].img);
 	img.setAttribute('alt', allData.id[idCart].alt);
 	cartTitle.textContent = allData.id[idCart].name;
@@ -107,14 +132,28 @@ const handleData = () => {
 	lastPrize.textContent = '$' + Math.round(allData.id[idCart].prize * 1.1);
 	cartText.textContent = allData.id[idCart].text;
 
+	// All section
 	allImg.setAttribute('src', allData.id[idCart].img);
 	allImg.setAttribute('alt', allData.id[idCart].alt);
 	contentTitle.textContent = allData.id[idCart].name;
 	allPrize.textContent = '$' + allData.id[idCart].prize;
 	allLocation.textContent = allData.id[idCart].location;
-	textInBottom.textContent = allData.id[idCart].name
+	textInBottom.textContent = allData.id[idCart].name;
 };
 
+const handleBestData = () => {
+
+	idCart = 3
+
+	// Cart
+	img.setAttribute('src', allData.id[idCart].img);
+	img.setAttribute('alt', allData.id[idCart].alt);
+	cartTitle.textContent = allData.id[idCart].name;
+	type.textContent = allData.id[idCart].type;
+	prize.textContent = '$' + allData.id[idCart].prize;
+	lastPrize.textContent = '$' + Math.round(allData.id[idCart].prize * 1.1);
+	cartText.textContent = allData.id[idCart].text;
+}
 
 const handleOpen = (e) => {
 	cart.style.display = 'flex';
