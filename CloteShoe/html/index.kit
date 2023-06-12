@@ -18,7 +18,7 @@
 						Oferujemy <span class="header-text"></span>
 					</h2>
 					<p>Znajdziesz już tylko u nas!</p>
-					<a href="#aboutus" type="button" class="btn btn-outline-light"
+					<a href="#all" type="button" class="btn btn-outline-light"
 						>Produkty
 						<img src="dist/img/icon/arrow.svg" alt="arrow img" />
 					</a>
@@ -27,7 +27,7 @@
 		</header>
 
 		<main>
-			<section class="section best">
+			<section id="best" class="section best">
 				<div class="wrapper">
 					<h2 class="section__title">Najlepszy produkt</h2>
 				</div>
@@ -72,7 +72,7 @@
 								<a
 									href="#aboutus"
 									type="button"
-									class="section__cart-btn btn-outline-light"
+									class="section__cart-btn btn-outline-light best-btn"
 									><span>Czytaj więcej</span>
 								</a>
 							</div>
@@ -81,7 +81,7 @@
 				</div>
 			</section>
 
-			<section class="section all">
+			<section id="all" class="section all">
 				<div class="wrapper">
 					<h2 class="section__title">Przeglądaj wszystkie</h2>
 				</div>
@@ -128,7 +128,7 @@
 			<!-- @include 'cart.kit' -->
 
 			<div class="wrapper">
-				<section class="section information">
+				<section id="aboutus" class="section information">
 					<h2 class="section__title">O nas i naszym sklepie</h2>
 
 					<div class="information__content">
@@ -155,13 +155,16 @@
 			</div>
 
 			<div class="wrapper">
-				<section class="section information">
+				<section id="contact" class="section information">
 					<h2 class="section__title">Kontakt</h2>
 
 					<div class="information__content">
+						<div class="copy-alert">
+							<p>Skopiowano do schowka!</p>
+						</div>
 						<p>
 							Mail:
-							<span class="main-color">CloteShoe@mail.com</span>
+							<span class="main-color mail">CloteShoe@mail.com</span>
 						</p>
 						<p>
 							tel:

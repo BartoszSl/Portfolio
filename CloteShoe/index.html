@@ -22,7 +22,7 @@
 
 	</head>
 	<body>
-		<nav class="color">
+		<nav class="shadow-bg color nav-wrapper">
 	<div class="wrapper nav__line">
 		<button class="burger-btn">
 			<div class="burger-btn__box">
@@ -34,15 +34,18 @@
 			<img src="dist/img/icon/logo.svg" alt="logo icon svg" /> <p>CloteShoe</p>
 		</a>
         <button class="nav__shopCart">
+            <div class="addNewItem">
+                <p class="item-slot"></p>
+            </div>
             <img src="dist/img/icon/shopping-cart.svg" alt="shopping card svg">
         </button>
         
         <div class="menu-item">
             <ul class="nav__items dropdown">
-                <li><a href="" class="nav__item">Najlepszy produkt</a></li>
-                <li><a href="" class="nav__item">Wszystkie produkty</a></li>
-                <li><a href="" class="nav__item">O nas</a></li>
-                <li><a href="" class="nav__item">Kontakt</a></li>
+                <li><a href="#best" class="nav__item">Najlepszy produkt</a></li>
+                <li><a href="#all" class="nav__item">Wszystkie produkty</a></li>
+                <li><a href="#aboutus" class="nav__item">O nas</a></li>
+                <li><a href="#contact" class="nav__item">Kontakt</a></li>
             </ul>
         </div>
 	</div>
@@ -57,7 +60,7 @@
 						Oferujemy <span class="header-text"></span>
 					</h2>
 					<p>Znajdziesz już tylko u nas!</p>
-					<a href="#aboutus" type="button" class="btn btn-outline-light"
+					<a href="#all" type="button" class="btn btn-outline-light"
 						>Produkty
 						<img src="dist/img/icon/arrow.svg" alt="arrow img" />
 					</a>
@@ -66,7 +69,7 @@
 		</header>
 
 		<main>
-			<section class="section best">
+			<section id="best" class="section best">
 				<div class="wrapper">
 					<h2 class="section__title">Najlepszy produkt</h2>
 				</div>
@@ -111,7 +114,7 @@
 								<a
 									href="#aboutus"
 									type="button"
-									class="section__cart-btn btn-outline-light"
+									class="section__cart-btn btn-outline-light best-btn"
 									><span>Czytaj więcej</span>
 								</a>
 							</div>
@@ -120,7 +123,7 @@
 				</div>
 			</section>
 
-			<section class="section all">
+			<section id="all" class="section all">
 				<div class="wrapper">
 					<h2 class="section__title">Przeglądaj wszystkie</h2>
 				</div>
@@ -188,14 +191,14 @@
 					</p>
 					<div class="buttons">
 						<button class="buy">Kupuj</button>
-						<button><i class="fa-solid fa-bag-shopping"></i></button>
+						<button class="addToBuy "><i class="fa-solid fa-bag-shopping"></i></button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="bottom">
 			<div class="left">
-				<p class="cartText"> t </p>
+				<p class="cartText"></p>
 			</div>
 			<div class="right">
 				<div class="size">
@@ -316,7 +319,7 @@
 
 
 			<div class="wrapper">
-				<section class="section information">
+				<section id="aboutus" class="section information">
 					<h2 class="section__title">O nas i naszym sklepie</h2>
 
 					<div class="information__content">
@@ -343,13 +346,16 @@
 			</div>
 
 			<div class="wrapper">
-				<section class="section information">
+				<section id="contact" class="section information">
 					<h2 class="section__title">Kontakt</h2>
 
 					<div class="information__content">
+						<div class="copy-alert">
+							<p>Skopiowano do schowka!</p>
+						</div>
 						<p>
 							Mail:
-							<span class="main-color">CloteShoe@mail.com</span>
+							<span class="main-color mail">CloteShoe@mail.com</span>
 						</p>
 						<p>
 							tel:
@@ -415,10 +421,10 @@
 			<hr />
 			<div class="links">
 				<a href="#">Home</a>
-                <a href="">Wszystkie produkty</a>
-                <a href="">Kontakt</a>
-                <a href="">Najlepszy produkt</a>
-                <a href="">O nas</a>
+                <a href="#all">Wszystkie produkty</a>
+                <a href="#contact">Kontakt</a>
+                <a href="#best">Najlepszy produkt</a>
+                <a href="#aboutus">O nas</a>
                 <a href="">Regulamin</a>
 			</div>
 		</div>
