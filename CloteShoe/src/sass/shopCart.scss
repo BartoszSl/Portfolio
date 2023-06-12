@@ -79,6 +79,7 @@
 						display: flex;
 						gap: 0.5rem;
 						button {
+							position: relative;
 							padding: 0.5rem 2rem;
 							border-radius: 0.5rem;
 							font-weight: 700;
@@ -89,6 +90,17 @@
 						}
 						button:nth-child(2) {
 							padding: 0.5rem 1rem;
+						}
+
+						.addToBuy {
+							left: 0;
+							transition: color 0.2s, border-radius 0.2s, left 0.7s;
+						}
+
+						.addToBuyAnimation {
+							color: transparent;
+							border-radius: 50%;
+							left: 75%;
 						}
 					}
 				}
