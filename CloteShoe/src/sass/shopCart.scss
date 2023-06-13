@@ -26,7 +26,7 @@
 	background-color: white;
 	border-radius: 1rem;
 	overflow: hidden;
-	z-index: 100;
+	z-index: 10;
 
 	.content {
 		width: 100%;
@@ -78,7 +78,8 @@
 					.buttons {
 						display: flex;
 						gap: 0.5rem;
-						button {
+						button,
+						a {
 							position: relative;
 							padding: 0.5rem 2rem;
 							border-radius: 0.5rem;
@@ -88,7 +89,7 @@
 							border: none;
 							cursor: pointer;
 						}
-						button:nth-child(2) {
+						button {
 							padding: 0.5rem 1rem;
 						}
 
@@ -101,6 +102,25 @@
 							color: transparent;
 							border-radius: 50%;
 							left: 75%;
+						}
+						.errorAlert {
+							position: absolute;
+							top: 0;
+							right: 0;
+							width: 100%;
+							text-align: center;
+							color: white;
+							background-color: $cta-color;
+							border-radius: 0.5rem;
+							transform: translateY(-100%);
+							transition: transform 0.5s;
+							p {
+								padding: 0.5rem;
+								font-size: 0.8em;
+							}
+						}
+						.errorAlertAnimation {
+							transform: translateY(0);
 						}
 					}
 				}
@@ -132,7 +152,7 @@
 				h2 {
 					font-size: 1rem;
 				}
-				.blocks {
+				form {
 					display: flex;
 					gap: 0.8rem;
 					margin-top: 1.2rem;
@@ -252,7 +272,8 @@
 						}
 						.buttons {
 							gap: 1rem;
-							button {
+							button,
+							a {
 								font-size: 1.6rem;
 							}
 						}
@@ -276,7 +297,7 @@
 					h2 {
 						font-size: 1.4rem;
 					}
-					.blocks {
+					form {
 						gap: 1rem;
 
 						input {
@@ -321,7 +342,8 @@
 						}
 						.buttons {
 							gap: 1.4rem;
-							button {
+							button,
+							a {
 								font-size: 2.2rem;
 							}
 						}
@@ -344,7 +366,7 @@
 					h2 {
 						font-size: 1.6rem;
 					}
-					.blocks {
+					form {
 						gap: 1rem;
 
 						input {
@@ -378,7 +400,7 @@
 					.bottom-inf {
 						.buttons {
 							gap: 1.6rem;
-							button {
+							a {
 								padding: 0.6rem 2.25rem;
 								font-size: 2.5rem;
 							}
@@ -402,7 +424,7 @@
 					h2 {
 						font-size: 1.8rem;
 					}
-					.blocks {
+					form {
 						gap: 1.2rem;
 
 						input {
@@ -452,7 +474,8 @@
 							.buy {
 								padding: 0.6rem 2.5rem;
 							}
-							button {
+							button,
+							a {
 								font-size: 2.8rem;
 							}
 						}
@@ -475,7 +498,7 @@
 					h2 {
 						font-size: 2.2rem;
 					}
-					.blocks {
+					form {
 						gap: 1.2rem;
 
 						input {
