@@ -7,46 +7,30 @@ const allSections = document.querySelectorAll('.section');
 const navLine = document.querySelector('nav');
 // const allNavItems = document.querySelectorAll('.nav__item')
 
+let clickToPageCount = 0;
+
 const handleNav = () => {
-	nav.classList.toggle('menu-item--active');
 
-	navBtnBars.classList.remove('black-bars-color');
+		nav.classList.toggle('menu-item--active');
 
-	allNavItems.forEach((item) => {
-		item.addEventListener('click', () => {
-			nav.classList.remove('menu-item--active');
+		navBtnBars.classList.remove('black-bars-color');
+
+		allNavItems.forEach((item) => {
+			item.addEventListener('click', () => {
+				nav.classList.remove('menu-item--active');
+			});
 		});
-	});
+	
 };
 
 const addShadow = () => {
-	if (window.scrollY >= 300) {
+	
+	if (window.scrollY >= 300 && clickToPageCount == 0) {
 		navLine.classList.add('shadow-bg');
 	} else {
 		navLine.classList.remove('shadow-bg');
 	}
 };
 
-
 window.addEventListener('scroll', addShadow);
-
-// const handleObserver = () => {
-// 	const currentSection = window.scrollY;
-
-// 	allSections.forEach((section) => {
-// 		if (
-// 			section.classList.contains('white-section') &&
-// 			section.offsetTop <= currentSection + 60
-// 		) {
-// 			navBtnBars.classList.add('black-bars-color');
-// 		} else if (
-// !section.classList.contains('white-section') &&
-// 			section.offsetTop <= currentSection + 60
-// 		) {
-// 			navBtnBars.classList.remove('black-bars-color');
-// 		}
-// 	});
-// };
-
 navBtn.addEventListener('click', handleNav);
-// window.addEventListener('scroll', handleObserver);
