@@ -15,12 +15,11 @@ const allPrize = document.querySelector('.all-prize');
 const allLocation = document.querySelector('.all-location');
 const textInBottom = document.querySelector('.down-text');
 const addToBuy = document.querySelector('.addToBuy');
+const buy = document.querySelector('.buy');
 const addNewItem = document.querySelector('.addNewItem');
-const itemSlot = document.querySelector('.item-slot')
-const bestBtn = document.querySelector('.best-btn')
-
-let isBlocked = false;
-let clickCount = 0;
+const itemSlot = document.querySelector('.item-slot');
+const bestBtn = document.querySelector('.best-btn');
+const errorAlert = document.querySelector('.errorAlert');
 
 const allData = {
 	id: {
@@ -63,25 +62,28 @@ const allData = {
 	},
 };
 
-// for (const key in allData.id) {
-// 	if (allData.id.hasOwnProperty(key)) {
-// 		const item = allData.id[key];
-// 		console.log(item.name);
-// 		console.log('$' + item.prize);
-// 		console.log(item.location);
-// 		console.log(item.type);
-// 		console.log(item.text);
-// 		console.log("$" + Math.round(item.prize * 1.1)); // last prize
-// 	}
-// }
+let clickToPageCount = 0;
+let items = 0
 
 const listenerEvents = () => {
-	cartOpenButton.forEach((item) => item.addEventListener('click', handleOpen));
-	cartShadow.addEventListener('click', closeCart);
-	nextBtn.addEventListener('click', addID);
-	backBtn.addEventListener('click', subtractID);
-	addToBuy.addEventListener('click', addItem);
-	bestBtn.addEventListener('click', handleBestData)
+	if (clickToPageCount == 0) {
+		console.log('test');
+		cartOpenButton.forEach((item) =>
+			item.addEventListener('click', handleOpen)
+		);
+		cartShadow.addEventListener('click', closeCart);
+		nextBtn.addEventListener('click', addID);
+		backBtn.addEventListener('click', subtractID);
+		addToBuy.addEventListener('click', () => {
+			items ++
+			cartDataSend()
+		});
+		buy.addEventListener('click', () => {
+			items ++
+			cartDataSend()
+		});
+		bestBtn.addEventListener('click', handleBestData);
+	}
 };
 
 let itemAmount = 0;
@@ -92,8 +94,8 @@ const addItem = () => {
 	if (itemAmount == 0) {
 		addNewItem.classList.remove('addNewItemAnimation');
 	}
-	if(itemAmount >= 10) {
-		itemSlot.textContent = "9+";
+	if (itemAmount >= 10) {
+		itemSlot.textContent = '9+';
 	}
 	addToBuy.classList.add('addToBuyAnimation');
 	setTimeout(() => {
@@ -122,6 +124,45 @@ const subtractID = () => {
 	handleData();
 };
 
+const itemData = {
+	items: [],
+	size: [],
+	color: [],
+	quantity: [],
+	name: [],
+	type: [],
+};
+
+// Przesyłanie danych na transaction
+
+const cartDataSend = () => {
+	const selectedSize = document.querySelector('input[name=size]:checked');
+	const selectedColor = document.querySelector('input[name=color]:checked');
+	const selectedQuantity = document.querySelector(
+		'input[name=quantity]:checked'
+	);
+
+	addToBuy.addEventListener('click', (e) => e.preventDefault());
+
+	if (selectedSize && selectedColor && selectedQuantity) {
+		itemData['items'].push(items)
+
+		itemData['size'].push(selectedSize.value);
+		itemData['color'].push(selectedColor.value);
+		itemData['quantity'].push(selectedQuantity.value);
+		itemData['name'].push(allData.id[idCart].name);
+		itemData['type'].push(allData.id[idCart].type);
+
+		localStorage.setItem('myData', JSON.stringify(itemData));
+		addItem();
+	} else {
+		errorAlert.classList.add('errorAlertAnimation');
+		setTimeout(() => {
+			errorAlert.classList.remove('errorAlertAnimation');
+		}, 2000);
+	}
+};
+
 const handleData = () => {
 	// Cart
 	img.setAttribute('src', allData.id[idCart].img);
@@ -142,8 +183,7 @@ const handleData = () => {
 };
 
 const handleBestData = () => {
-
-	idCart = 3
+	idCart = 3;
 
 	// Cart
 	img.setAttribute('src', allData.id[idCart].img);
@@ -153,9 +193,12 @@ const handleBestData = () => {
 	prize.textContent = '$' + allData.id[idCart].prize;
 	lastPrize.textContent = '$' + Math.round(allData.id[idCart].prize * 1.1);
 	cartText.textContent = allData.id[idCart].text;
-}
+};
 
-const handleOpen = (e) => {
+let isBlocked = false;
+let clickCount = 0;
+
+const handleOpen = () => {
 	cart.style.display = 'flex';
 	cartShadow.style.display = 'flex';
 
@@ -180,5 +223,9 @@ const closeCart = (e) => {
 	}
 };
 
-window.addEventListener('load', listenerEvents);
-window.addEventListener('load', handleData);
+window.addEventListener('DOMContentLoaded', () => {
+	if (clickToPageCount == 0) {
+		listenerEvents();
+		handleData();
+	}
+});
