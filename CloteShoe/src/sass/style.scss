@@ -27,7 +27,7 @@ body {
 }
 
 .shadow-bg {
-	background-color: rgba(0, 0, 0, 0.7) ;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .main-color {
@@ -48,24 +48,27 @@ body {
 
 // Navigation
 
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5.5rem;
+	z-index: 101;
+	background-color: transparent;
+}
+
 .nav {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(100%);
-	transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 	&__line {
-		position: fixed;
-		top: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		position: fixed;
-		top: 0;
 		left: 50%;
 		transform: translate(-50%);
 		padding: 1em 1.7rem;
 		z-index: 100;
+		width: 100%;
 	}
 
 	&__title {
@@ -75,8 +78,9 @@ body {
 		gap: 1.1rem;
 		margin-right: 1.1rem;
 		font-size: 1.8rem;
-		img {
-			width: 25px;
+		i {
+			font-size: 2rem;
+			color: white;
 		}
 		p {
 			font-weight: 700;
@@ -93,6 +97,7 @@ body {
 		}
 		.addNewItem {
 			opacity: 0;
+			display: flex;
 			align-items: center;
 			justify-content: center;
 			position: absolute;
@@ -109,8 +114,8 @@ body {
 		.addNewItemAnimation {
 			opacity: 1;
 			top: 0;
-			height: 150%;
-			width: 150%;
+			height: 50%;
+			width: 50%;
 		}
 	}
 }
@@ -140,6 +145,7 @@ a {
 	text-align: center;
 	border-bottom-left-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
+	z-index: 100;
 	a {
 		font-weight: 700;
 		font-size: 1.3rem;
@@ -274,6 +280,7 @@ header {
 				padding-left 0.3s;
 			color: black;
 			font-size: 1.2rem;
+			cursor: pointer;
 			span {
 				z-index: 1;
 			}
@@ -326,6 +333,11 @@ header {
 	}
 }
 
+.fa-star,
+.gold {
+	color: $yellow-color;
+}
+
 .best {
 	&-text {
 		display: flex;
@@ -335,10 +347,6 @@ header {
 		p {
 			line-height: 2.2em;
 			margin-left: 10%;
-			.fa-star,
-			.gold {
-				color: $yellow-color;
-			}
 		}
 	}
 	&-more {
@@ -526,6 +534,35 @@ header {
 	}
 }
 
+// Information
+
+.down-effect {
+	position: relative;
+	z-index: 1;
+	transition: color 0.3s;
+	cursor: pointer;
+	&::after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		content: '';
+		height: 100%;
+		width: 100%;
+		transform: translateY(50%);
+		z-index: -1;
+		transition: transform 0.3s, background-color 0.3s;
+	}
+
+	&:hover {
+		color: white;
+	}
+
+	&:hover::after {
+		transform: translateY(0);
+		background-color: $cta-color;
+	}
+}
+
 .information {
 	&__content {
 		display: flex;
@@ -551,31 +588,6 @@ header {
 		}
 		p {
 			font-size: 1.4rem;
-			a {
-				position: relative;
-				z-index: 1;
-				transition: color 0.3s;
-				&::after {
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					content: '';
-					height: 100%;
-					width: 100%;
-					transform: translateY(50%);
-					z-index: -1;
-					transition: transform 0.3s, background-color 0.3s;
-				}
-
-				&:hover {
-					color: white;
-				}
-
-				&:hover::after {
-					transform: translateY(0);
-					background-color: $cta-color;
-				}
-			}
 		}
 
 		&-form {
@@ -679,13 +691,16 @@ footer {
 // Media
 
 @media (min-width: 576px) {
+	nav {
+		height: 6rem;
+	}
 	.nav {
 		&__title {
 			font-size: 2rem;
 		}
 		&__shopCart {
-			img {
-				width: 2rem;
+			i {
+				font-size: 2.5rem;
 			}
 			.addNewItem {
 				height: 1.3em;
@@ -829,6 +844,10 @@ footer {
 }
 
 @media (min-width: 768px) {
+	nav {
+		height: 7rem;
+	}
+
 	nav .wrapper,
 	header .wrapper {
 		padding-left: 5rem;
@@ -838,8 +857,8 @@ footer {
 	.nav {
 		&__title {
 			font-size: 2.8rem;
-			img {
-				width: 40px;
+			i {
+				font-size: 3rem;
 			}
 		}
 		&__shopCart {
@@ -1027,6 +1046,9 @@ footer {
 }
 
 @media (min-width: 992px) {
+	nav {
+		height: 8rem;
+	}
 	.section {
 		padding-top: 10rem;
 		&__title {
@@ -1167,13 +1189,16 @@ footer {
 }
 
 @media (min-width: 1200px) {
+	nav {
+		height: 9rem;
+	}
 	.nav {
 		&__title {
 			gap: 2rem;
 			margin-right: 2rem;
 			font-size: 4.8rem;
-			img {
-				width: 60px;
+			i {
+				font-size: 5rem;
 			}
 		}
 		&__shopCart {
