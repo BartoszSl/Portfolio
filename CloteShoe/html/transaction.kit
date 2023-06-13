@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CloteShoe - Transaction</title>
+		<!-- @include 'styles.kit' -->
+		<link rel="stylesheet" href="dist/css/transaction.min.css" />
+	</head>
+	<body>
+		<nav>
+			<div class="wrapper nav__line">
+				<button class="burger-btn">
+					<div class="burger-btn__box">
+						<div class="burger-btn__bars"></div>
+					</div>
+				</button>
+
+				<a href="/index.html" class="nav__title">
+					<i class="fa-solid fa-shoe-prints"></i>
+					<p>CloteShoe</p>
+				</a>
+				<button class="nav__shopCart">
+					<div class="addNewItem">
+						<p class="item-slot"></p>
+					</div>
+					<img
+						src="dist/img/icon/shopping-cart-black.svg"
+						alt="shopping card svg"
+					/>
+				</button>
+
+				<div class="menu-item">
+					<ul class="nav__items dropdown">
+						<li>
+							<a href="/index.html#best" class="nav__item">Najlepszy produkt</a>
+						</li>
+						<li>
+							<a href="/index.html#all" class="nav__item">Wszystkie produkty</a>
+						</li>
+						<li><a href="/index.html#aboutus" class="nav__item">O nas</a></li>
+						<li><a href="/index.html#contact" class="nav__item">Kontakt</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<main class="wrapper">
+			<div class="items">
+				<div class="left">
+					<p class="black item-product">T-Shirt Basic</p>
+					<p class="grey item-amount">5 szt * $29</p>
+					<p class="grey item-color">
+						Kolor: <span class="js-c olor">Niebieski</span>
+					</p>
+					<p class="grey item-size">Rozmiar: <span class="js-size">S</span></p>
+				</div>
+				<div class="right">
+					<p class="item-prize bold black">$145</p>
+				</div>
+			</div>
+
+			<div class="costs">
+				<div class="left">
+					<p class="tax black">Jakiś podatek</p>
+					<p class="rabat black">
+						Kod rabatowy<span class="grey"
+							>(-<span class="js-procent">20</span>%)</span
+						>
+					</p>
+				</div>
+				<div class="right">
+					<p class="tax-prize bold black">$12</p>
+					<p class="rabat-prize bold black">$31,4</p>
+				</div>
+			</div>
+
+			<div class="summary">
+				<div class="line"></div>
+				<div class="content">
+					<p class="allPrize black">Do zapłaty</p>
+					<p class="js-finallyPrize black bold">$125,6</p>
+				</div>
+			</div>
+
+			<form class="finalize">
+				<input type="checkbox" class="block size__block" name="accept" />
+				<label for="accept"
+					>Akceptuję <a class="cta-color down-effect">regulamin</a>
+					sklepu
+					<span class="gold">*</span>
+				</label>
+			</form>
+
+			<div class="button"><button>Finalizacja</button></div>
+		</main>
+
+		<!-- @include 'footer.kit' -->
+		<script src="dist/js/other.min.js"></script>
+		<script src="dist/js/hamburgerIcon.min.js"></script>
+		<script src="dist/js/cart.min.js"></script>
+		<script src="dist/js/transaction.min.js"></script>
+	</body>
+</html>

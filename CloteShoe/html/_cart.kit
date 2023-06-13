@@ -21,8 +21,11 @@
 						już dzisiaj!
 					</p>
 					<div class="buttons">
-						<button class="buy">Kupuj</button>
+						<a href="/transaction.html" class="buy">Kupuj</a>
 						<button class="addToBuy "><i class="fa-solid fa-bag-shopping"></i></button>
+						<div class="errorAlert">
+							<p>Uwaga! Próbujesz przesłać niepełne dane, proszę zaznacz odpowiednie pola</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -34,7 +37,7 @@
 			<div class="right">
 				<div class="size">
 					<h2>Wybierz rozmiar:</h2>
-					<form class="blocks">
+					<form class="form-size">
 						<input
 							type="radio"
 							class="block size__block"
@@ -70,7 +73,7 @@
 				</div>
 				<div class="color">
 					<h2>Wybierz kolor:</h2>
-					<form class="blocks">
+					<form class="form-color">
 						<input
 							type="radio"
 							class="block color__block"
@@ -106,7 +109,7 @@
 				</div>
 				<div class="quantity">
 					<h2>Wybierz ilość:</h2>
-					<form class="blocks">
+					<form class="form-quantity">
 						<input
 							type="radio"
 							class="block quantity__block"

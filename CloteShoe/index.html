@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>CloteShoe</title>
+		<title>CloteShoe - Home</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -22,7 +22,7 @@
 
 	</head>
 	<body>
-		<nav class="shadow-bg color nav-wrapper">
+		<nav>
 	<div class="wrapper nav__line">
 		<button class="burger-btn">
 			<div class="burger-btn__box">
@@ -30,14 +30,14 @@
 			</div>
 		</button>
 
-		<a href="#" class="nav__title">
-			<img src="dist/img/icon/logo.svg" alt="logo icon svg" /> <p>CloteShoe</p>
+		<a href="/index.html" class="nav__title">
+			<i class="fa-solid fa-shoe-prints"></i><p>CloteShoe</p>
 		</a>
         <button class="nav__shopCart">
             <div class="addNewItem">
                 <p class="item-slot"></p>
             </div>
-            <img src="dist/img/icon/shopping-cart.svg" alt="shopping card svg">
+            <a href="/transaction.html"><img src="dist/img/icon/shopping-cart.svg" alt="shopping card svg"></a>
         </button>
         
         <div class="menu-item">
@@ -112,7 +112,7 @@
 								<p><i class="fa-solid fa-location-dot"></i> German</p>
 
 								<a
-									href="#aboutus"
+									
 									type="button"
 									class="section__cart-btn btn-outline-light best-btn"
 									><span>Czytaj więcej</span>
@@ -155,7 +155,7 @@
 										</div>
 
 										<a
-											href="#aboutus"
+											
 											type="button"
 											class="section__cart-btn btn-outline-light"
 											><span>Czytaj więcej</span>
@@ -190,8 +190,11 @@
 						już dzisiaj!
 					</p>
 					<div class="buttons">
-						<button class="buy">Kupuj</button>
+						<a href="/transaction.html" class="buy">Kupuj</a>
 						<button class="addToBuy "><i class="fa-solid fa-bag-shopping"></i></button>
+						<div class="errorAlert">
+							<p>Uwaga! Próbujesz przesłać niepełne dane, proszę zaznacz odpowiednie pola</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -203,7 +206,7 @@
 			<div class="right">
 				<div class="size">
 					<h2>Wybierz rozmiar:</h2>
-					<form class="blocks">
+					<form class="form-size">
 						<input
 							type="radio"
 							class="block size__block"
@@ -239,7 +242,7 @@
 				</div>
 				<div class="color">
 					<h2>Wybierz kolor:</h2>
-					<form class="blocks">
+					<form class="form-color">
 						<input
 							type="radio"
 							class="block color__block"
@@ -275,7 +278,7 @@
 				</div>
 				<div class="quantity">
 					<h2>Wybierz ilość:</h2>
-					<form class="blocks">
+					<form class="form-quantity">
 						<input
 							type="radio"
 							class="block quantity__block"
@@ -339,7 +342,7 @@
 						</p>
 						<p class="information__content-color">
 							Odnośnie polityce sklepu przeczytasz na
-							<a href="" class="cta-color">regulamin</a>
+							<a href="" class="down-effect cta-color">regulamin</a>
 						</p>
 					</div>
 				</section>
@@ -435,8 +438,10 @@
 		
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-<script src="dist/js/cart.min.js"></script>
 <script src="dist/js/hamburgerIcon.min.js"></script>
+<script src="dist/js/other.min.js"></script>
 <script src="dist/js/main.min.js"></script>
+<script src="dist/js/cart.min.js"></script>
+
 	</body>
 </html>
