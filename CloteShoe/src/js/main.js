@@ -37,6 +37,4 @@ const typed = () => {
 };
 
 mail.addEventListener('click', copyMail);
-window.addEventListener('load', currentYearFunction);
 window.addEventListener('load', typed);
-
