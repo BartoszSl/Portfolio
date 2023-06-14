@@ -78,8 +78,7 @@
 					.buttons {
 						display: flex;
 						gap: 0.5rem;
-						button,
-						a {
+						button{
 							position: relative;
 							padding: 0.5rem 2rem;
 							border-radius: 0.5rem;
@@ -89,7 +88,7 @@
 							border: none;
 							cursor: pointer;
 						}
-						button {
+						button:nth-child(2) {
 							padding: 0.5rem 1rem;
 						}
 
@@ -272,8 +271,7 @@
 						}
 						.buttons {
 							gap: 1rem;
-							button,
-							a {
+							button{
 								font-size: 1.6rem;
 							}
 						}
@@ -400,7 +398,7 @@
 					.bottom-inf {
 						.buttons {
 							gap: 1.6rem;
-							a {
+							button {
 								padding: 0.6rem 2.25rem;
 								font-size: 2.5rem;
 							}
@@ -474,8 +472,7 @@
 							.buy {
 								padding: 0.6rem 2.5rem;
 							}
-							button,
-							a {
+							button{
 								font-size: 2.8rem;
 							}
 						}
