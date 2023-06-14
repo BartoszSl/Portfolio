@@ -62,11 +62,11 @@ const allData = {
 	},
 };
 
-let clickToPageCount = 0;
-let items = 0
+let page = 0;
+let items = -1;
 
 const listenerEvents = () => {
-	if (clickToPageCount == 0) {
+	if (page == 0) {
 		console.log('test');
 		cartOpenButton.forEach((item) =>
 			item.addEventListener('click', handleOpen)
@@ -75,12 +75,13 @@ const listenerEvents = () => {
 		nextBtn.addEventListener('click', addID);
 		backBtn.addEventListener('click', subtractID);
 		addToBuy.addEventListener('click', () => {
-			items ++
-			cartDataSend()
+			cartDataSend();
+			items++;
 		});
 		buy.addEventListener('click', () => {
-			items ++
-			cartDataSend()
+			cartDataSend();
+			buyFunction();
+			items++;
 		});
 		bestBtn.addEventListener('click', handleBestData);
 	}
@@ -131,9 +132,21 @@ const itemData = {
 	quantity: [],
 	name: [],
 	type: [],
+	prize: []
 };
 
 // Przesyłanie danych na transaction
+
+const buyFunction = () => {
+	const selectedSize = document.querySelector('input[name=size]:checked');
+	const selectedColor = document.querySelector('input[name=color]:checked');
+	const selectedQuantity = document.querySelector(
+		'input[name=quantity]:checked'
+	);
+	if (selectedSize && selectedColor && selectedQuantity) {
+		window.location.href = '/transaction.html';
+	}
+};
 
 const cartDataSend = () => {
 	const selectedSize = document.querySelector('input[name=size]:checked');
@@ -145,13 +158,14 @@ const cartDataSend = () => {
 	addToBuy.addEventListener('click', (e) => e.preventDefault());
 
 	if (selectedSize && selectedColor && selectedQuantity) {
-		itemData['items'].push(items)
+		itemData['items'].push(items);
 
 		itemData['size'].push(selectedSize.value);
 		itemData['color'].push(selectedColor.value);
 		itemData['quantity'].push(selectedQuantity.value);
 		itemData['name'].push(allData.id[idCart].name);
 		itemData['type'].push(allData.id[idCart].type);
+		itemData['prize'].push(allData.id[idCart].prize)
 
 		localStorage.setItem('myData', JSON.stringify(itemData));
 		addItem();
@@ -224,7 +238,7 @@ const closeCart = (e) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-	if (clickToPageCount == 0) {
+	if (page == 0) {
 		listenerEvents();
 		handleData();
 	}
