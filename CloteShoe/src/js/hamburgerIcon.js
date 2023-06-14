@@ -7,7 +7,7 @@ const allSections = document.querySelectorAll('.section');
 const navLine = document.querySelector('nav');
 // const allNavItems = document.querySelectorAll('.nav__item')
 
-let clickToPageCount = 0;
+let page = 0;
 
 const handleNav = () => {
 
@@ -25,7 +25,7 @@ const handleNav = () => {
 
 const addShadow = () => {
 	
-	if (window.scrollY >= 300 && clickToPageCount == 0) {
+	if (window.scrollY >= 300 && page == 0) {
 		navLine.classList.add('shadow-bg');
 	} else {
 		navLine.classList.remove('shadow-bg');
