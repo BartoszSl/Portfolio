@@ -84,36 +84,60 @@ main {
 
 	.finalize {
 		display: flex;
-		align-items: center;
-		gap: 0.7rem;
-		margin: 0 auto;
-		margin-top: 2.5rem;
+		flex-direction: column;
 
-		input[type='checkbox'] {
-			appearance: none;
-			border-radius: 0.5rem;
-			border: 2px solid #000;
-			width: 1.7rem;
-			height: 1.7rem;
-			cursor: pointer;
-			position: relative;
-			transition: border 0.3s;
-			&::before {
-				font-family: "Font Awesome 5 Free";
-				content: '\f058';
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				font-size: .8em;
-				color: transparent;
-				transition: color 0.3s ;
+		.label-input {
+			display: flex;
+			align-items: center;
+			gap: 0.7rem;
+			margin: 0 auto;
+			margin-top: 2.5rem;
+			input[type='checkbox'] {
+				appearance: none;
+				border-radius: 0.5rem;
+				border: 2px solid #000;
+				width: 1.7rem;
+				height: 1.7rem;
+				cursor: pointer;
+				position: relative;
+				transition: border 0.3s;
+				&::before {
+					font-family: 'Font Awesome 5 Free';
+					content: '\f058';
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					font-size: 0.8em;
+					color: transparent;
+					transition: color 0.3s;
+				}
+				&:checked::before {
+					color: $cta-color;
+				}
+				&:hover {
+					border: 2px solid $cta-color;
+				}
 			}
-			&:checked::before {
-				color: $cta-color;
+
+			input[type='text'] {
+				border-radius: 0.5rem;
+				border: 1px solid black;
+				padding: 0.5rem;
 			}
-			&:hover {
-				border: 2px solid $cta-color;
+			.code-button {
+				padding: 1rem 2rem;
+				cursor: pointer;
+				border-radius: 0.5rem;
+				border: 1px solid black;
+				font-weight: 700;
+				letter-spacing: 0.1rem;
+				transition: border 0.3s, background-color 0.3s, color 0.3s;
+				&:hover {
+					border: 1px solid transparent;
+					background-color: $cta-color;
+					color: white;
+				}
 			}
 		}
 
@@ -229,19 +253,21 @@ main {
 		}
 
 		.finalize {
-			gap: 1.4rem;
-			margin-top: 3rem;
+			.label-input {
+				gap: 1.4rem;
+				margin-top: 3rem;
 
-			input[type='checkbox'] {
-				width: 2.2rem;
-				height: 2.2rem;
-				&::before {
-					font-size: 1.1em;
+				input[type='checkbox'] {
+					width: 2.2rem;
+					height: 2.2rem;
+					&::before {
+						font-size: 1.1em;
+					}
 				}
-			}
 
-			label {
-				font-size: 1.8rem;
+				label {
+					font-size: 1.8rem;
+				}
 			}
 		}
 		.button {
@@ -286,19 +312,21 @@ main {
 		}
 
 		.finalize {
-			gap: 1.8rem;
-			margin-top: 3.5rem;
+			.label-input {
+				gap: 1.8rem;
+				margin-top: 3.5rem;
 
-			input[type='checkbox'] {
-				width: 2.4rem;
-				height: 2.4rem;
-				&::before {
-					font-size: 1.2em;
+				input[type='checkbox'] {
+					width: 2.4rem;
+					height: 2.4rem;
+					&::before {
+						font-size: 1.2em;
+					}
 				}
-			}
 
-			label {
-				font-size: 2rem;
+				label {
+					font-size: 2rem;
+				}
 			}
 		}
 		.button {
@@ -342,8 +370,13 @@ main {
 		}
 
 		.finalize {
-			gap: 2rem;
-			margin-top: 4rem;
+			.label-input {
+				gap: 2rem;
+				margin-top: 4rem;
+				input[type='text'] {
+					padding: 0.8rem;
+				}
+			}
 		}
 		.button {
 			button {
