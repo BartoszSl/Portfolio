@@ -46,21 +46,7 @@
 			</div>
 		</nav>
 
-		<main class="wrapper">
-			<div class="items">
-				<div class="left">
-					<p class="black item-product">T-Shirt Basic</p>
-					<p class="grey item-amount">5 szt * $29</p>
-					<p class="grey item-color">
-						Kolor: <span class="js-c olor">Niebieski</span>
-					</p>
-					<p class="grey item-size">Rozmiar: <span class="js-size">S</span></p>
-				</div>
-				<div class="right">
-					<p class="item-prize bold black">$145</p>
-				</div>
-			</div>
-
+		<main class="wrapper main">
 			<div class="costs">
 				<div class="left">
 					<p class="tax black">Jakiś podatek</p>
@@ -85,13 +71,25 @@
 			</div>
 
 			<form class="finalize">
-				<input type="checkbox" class="block size__block" name="accept" />
-				<label for="accept"
-					>Akceptuję <a class="cta-color down-effect">regulamin</a>
-					sklepu
-					<span class="gold">*</span>
-				</label>
+				<div class="label-input">
+					<input type="checkbox" class="block size__block" name="accept" />
+					<label for="accept"
+						>Akceptuję <a class="cta-color down-effect">regulamin</a>
+						sklepu
+						<span class="gold">*</span>
+					</label>
+				</div>
+				<div class="label-input">
+					<input type="text" class="code" />
+					<label for=""
+						>Masz <span class="cta-color">kod?</span> Podaj go</label
+					>
+				</div>
+				<div class="label-input">
+					<label for="" class="code-button">Wyślij</label>
+				</div>
 			</form>
+
 
 			<div class="button"><button>Finalizacja</button></div>
 		</main>
