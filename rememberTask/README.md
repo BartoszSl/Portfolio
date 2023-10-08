@@ -6,7 +6,8 @@ A school project that became the first application of my portfolio to test my Re
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Getting Start](#getting-start)
-- [Contributing](#contributing)
+- [Used Technology](#used-technology)
+- [Figma Project](#figma-project)
 
 ## Prerequisites
 - Node.js (recommended version)
@@ -15,7 +16,7 @@ A school project that became the first application of my portfolio to test my Re
 
 ## Installation 
 
-To use, download the files or clone the repository
+> To use, download the files or clone the repository
 
 - Clone the repo: ``git clone ``
 
@@ -43,4 +44,14 @@ Read the [Getting Start](#getting-start) for informations how app works
 If no error appeared, a new page ``http://localhost:3000/`` based on React will appear. The application is very intuitive, just check the boxes located on the displayed window 
 
 There are 4 different options available, ``Create & Select & Delete & Update``.<br/>
-Using buttons such as ``Create`` ``Odswiez`` ``Usun`` ``Edit`` you can send a query to the database via the express server and ``http://localhost:3001/[type-of-request]``.
+Using buttons such as ``Stwórz`` ``Odswież`` ``Usuń`` ``Edytuj`` you can send a query to the database via the express server and ``http://localhost:3001/[type-of-request]``.
+
+## Used Technology
+
+This project is divided into Front-end and Back-end. Everything works on node.js,<br/>
+On the Front-end I used **React** with **module.css**, <br/>
+And on Back-end I used **Express** with **mysql2/promise**.
+
+## Figma Project
+
+[Link to Figma](https://www.figma.com/file/hI8sHYbvhMDrNnztbVlS8E/Untitled?node-id=0%3A1&mode=dev)
