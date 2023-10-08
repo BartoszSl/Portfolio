@@ -1,0 +1,35 @@
+.advanced-mode {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	transform: translateY(100%);
+	opacity: 0;
+	transition: opacity 1s, transform 1s;
+}
+
+.sectionUp {
+	opacity: 0;
+	transform: translateY(100%);
+	animation: up 1s forwards;
+}
+
+.sectionDown {
+	opacity: 1;
+	transform: translateY(0);
+	animation: down 1s forwards;
+}
+
+@keyframes up {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes down {
+	to {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+}
+

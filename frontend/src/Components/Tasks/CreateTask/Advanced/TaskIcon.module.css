@@ -1,0 +1,77 @@
+.task-icon {
+	display: flex;
+	flex-direction: column;
+	gap: 1.8rem;
+}
+
+.tools {
+	display: flex;
+	align-items: center;
+	gap: 2.4rem;
+}
+
+label {
+	background-color: #28282a;
+	padding: 1em 2rem;
+	border-radius: 2.5rem;
+	border: 1px solid;
+	font-weight: 700;
+}
+
+.right-side {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.color-picker {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+	margin-left: 3.6rem;
+	z-index: 99;
+	cursor: pointer;
+}
+
+i {
+	color: #6c6b71;
+	margin-left: 1rem;
+}
+
+.icon-color {
+	display: flex;
+	cursor: pointer;
+}
+
+.select {
+	width: 20rem;
+	font-weight: 700;
+}
+
+.select:hover,
+.select:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.select label {
+	color: white;
+}
+
+.icon-result {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 0.5rem;
+}
+
+.icon-pattern {
+	font-style: normal;
+	font-size: 2em;
+	font-weight: 700;
+	margin-right: 1rem;
+}

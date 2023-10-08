@@ -1,0 +1,33 @@
+.task-title {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #6c6b71;
+}
+
+.task-title input {
+	background: transparent;
+	border: none;
+	height: 4rem;
+	font-size: 3.2rem;
+	color: #8b8990;
+	margin-bottom: 1.4rem;
+}
+
+.task-title input:focus {
+	outline: none;
+}
+
+.task-title .available-letters {
+	display: grid;
+	place-items: center;
+	width: 4rem;
+	height: 3rem;
+	border-radius: 1rem;
+	background-color: #6c6b71;
+}
+
+.task-title .available-letters span {
+	font-size: 1.4rem;
+	font-weight: 700;
+}

@@ -1,0 +1,26 @@
+.task-reminder .reminder-toggle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 0.6rem;
+	width: 30rem;
+	height: 5rem;
+	background-color: #28282b;
+	border-radius: 2.5rem;
+	border-radius: 1px solid #4e4e51;
+}
+
+.task-reminder .reminder-toggle .indicator {
+	padding: 1rem 1.5rem;
+	border-radius: 2rem;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+
+.task-reminder .reminder-toggle .indicator span {
+	font-weight: 700;
+}
+
+.task-reminder .reminder-toggle .active {
+	background-color: #464548;
+}

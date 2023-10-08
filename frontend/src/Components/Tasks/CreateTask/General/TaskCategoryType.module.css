@@ -1,0 +1,35 @@
+.manyRadioInputs {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.manyRadioInputs .radios {
+	position: absolute;
+	left: 5rem;
+	display: flex;
+	gap: 1.1rem;
+	margin-left: 1em;
+}
+
+.task-type input[type='radio'] {
+	display: grid;
+	align-items: center;
+	appearance: none;
+	padding: 0.8rem 1rem;
+	background-color: #28282a;
+	color: #e0e0e0;
+	border-radius: 0.5rem;
+	transition: outline 0.4s;
+	cursor: pointer;
+}
+
+.task-type input[type='radio']:checked {
+	outline: 1px solid ;
+}
+
+.task-type input[type='radio']::before {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	font-size: 1.5rem;
+}

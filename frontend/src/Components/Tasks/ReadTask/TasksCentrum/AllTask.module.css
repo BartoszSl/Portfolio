@@ -1,0 +1,29 @@
+.task-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2.8rem;
+}
+
+.static-text {
+	color: #8b8990;
+	font-weight: 500;
+}
+
+.title {
+	font-size: 2em;
+	margin: 1rem 0 2rem;
+	font-weight: 500;
+	color: #e0e0e0;
+}
+
+.title i {
+	color: #e0e0e0;
+	margin-left: 2rem;
+	font-size: 3rem;
+}
+
+p {
+	font-size: 2rem;
+	font-weight: 400;
+	color: #fff;
+}
