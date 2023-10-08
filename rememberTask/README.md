@@ -1,4 +1,6 @@
 # Remember Task
+
+A school project that became the first application of my portfolio to test my React and MySql skills
  
 ## Table of Contents
 - [Prerequisites](#prerequisites)
