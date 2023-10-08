@@ -1,0 +1,72 @@
+.start-text {
+	padding: 0 2rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	opacity: 1;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	gap: 9rem;
+}
+.start-text p {
+	text-align: center;
+	font-size: 2em;
+	color: #e0e0e0;
+}
+.start-text .more-p .next-info,
+.start-text .more-p .funny-text {
+	margin-top: 1em;
+	font-size: 1em;
+}
+.start-text .more-p .next-info {
+	margin-top: 3em;
+	color: #929292;
+}
+.start-text .animation-up {
+	opacity: 0;
+	-webkit-transform: translateY(300%);
+	transform: translateY(300%);
+}
+.start-text .first {
+	-webkit-animation: up 3s forwards;
+	animation: up 3s forwards;
+}
+.start-text .second {
+	-webkit-animation: up 3s forwards 3s;
+	animation: up 3s forwards 3s;
+}
+.start-text .third {
+	-webkit-animation: up 3s forwards 6s;
+	animation: up 3s forwards 6s;
+}
+.start-text .fourth {
+	opacity: 0;
+	-webkit-animation: visible 3s forwards 9s;
+	animation: visible 3s forwards 9s;
+}
+
+.closeAnimation {
+	-webkit-animation: closeStartText 2s forwards;
+	animation: closeStartText 2s forwards;
+}
+
+@keyframes up {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes visible {
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes closeStartText {
+	to {
+		opacity: 0;
+	}
+}

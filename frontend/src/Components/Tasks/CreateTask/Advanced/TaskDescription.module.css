@@ -1,0 +1,17 @@
+.task-description {
+	display: flex;
+	flex-direction: column;
+	gap: 1.8rem;
+}
+
+.off {
+	display: flex;
+	color: #f23838;
+	font-size: 1em;
+	font-weight: 700;
+}
+
+.off i {
+	font-size: 2rem;
+	color: #f23838;
+}

@@ -1,0 +1,23 @@
+@keyframes slideToLeft {
+	to {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes slideToRight {
+	to {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+.animationSlideToLeft {
+	transition: opacity 1.5s, transform 1.5s;
+	animation: slideToLeft 1.5s forwards;
+}
+
+.animationSlideToRight {
+	transition: opacity 1.5s, transform 1.5s;
+	animation: slideToRight 1.5s forwards;
+}

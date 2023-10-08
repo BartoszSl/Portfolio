@@ -1,0 +1,48 @@
+.task-friends {
+	display: flex;
+	flex-direction: column;
+	gap: 1.8rem;
+}
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 55rem;
+	gap: 1.9rem;
+}
+
+.list div {
+	padding: 1em 2rem 1em 2.3rem;
+	border-radius: 25px;
+	background: #28282a;
+	cursor: pointer;
+}
+
+.list p {
+	color: #e0e0e0;
+	font-weight: 700;
+	font-size: 1em;
+}
+
+.friends-add {
+	display: flex;
+	gap: 2.9rem;
+	transition: box-shadow 0.4s;
+}
+
+.friends-add:hover {
+	box-shadow: 0 1px 3px rgba(205, 204, 204, 0.5);
+}
+
+.friends-add i {
+	color: #6c6b71;
+	font-size: 2rem;
+}
+
+.friend {
+	transition: box-shadow 0.4s;
+}
+
+.friend:hover {
+	box-shadow: 0 0 5px 3px rgba(221, 37, 37, 0.5);
+}

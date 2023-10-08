@@ -1,0 +1,17 @@
+.pick-type {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 3.5rem 6rem;
+}
+
+.pick-type h2 {
+	font-size: 3.2rem;
+	font-weight: 500;
+}
+
+.pick-type i {
+	color: #8b8990;
+	font-size: 3rem;
+	cursor: pointer;
+}

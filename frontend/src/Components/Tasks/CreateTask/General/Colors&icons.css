@@ -1,0 +1,70 @@
+#light-blue {
+	background-color: #83b8df;
+}
+
+#light-blue:checked::before {
+	outline-color: rgba(131, 184, 223, 0.5);
+}
+
+#orange {
+	background-color: #ff8c00;
+}
+
+#orange:checked::before {
+	outline-color: rgba(255, 140, 0, 0.5);
+}
+
+#pink {
+	background-color: #ff5964;
+}
+
+#pink:checked::before {
+	outline-color: rgba(255, 89, 100, 0.5);
+}
+
+#green {
+	background-color: #59b90e;
+}
+
+#green:checked::before {
+	outline-color: rgba(89, 185, 14, 0.5);
+}
+#cyan {
+	background-color: #14aeae;
+}
+
+#cyan:checked::before {
+	outline-color: rgba(20, 174, 174, 0.5);
+}
+
+#magenta {
+	background-color: #ac7dd2;
+}
+
+#magenta:checked::before {
+	outline-color: rgba(172, 125, 210, 0.5);
+}
+
+#violet {
+	background-color: #6562fc;
+}
+
+#violet:checked::before {
+	outline-color: rgba(101, 98, 252, 0.5);
+}
+
+#dinner::before {
+	content: '\f2e7';
+}
+#game::before {
+	content: '\f590';
+}
+#sport::before {
+	content: '\f45f';
+}
+#outside::before {
+	content: '\f185';
+}
+#shopping::before {
+	content: '\f290';
+}

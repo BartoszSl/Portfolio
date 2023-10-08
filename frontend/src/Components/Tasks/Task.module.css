@@ -1,0 +1,19 @@
+.form {
+	position: relative;
+	padding: 4.5rem 0 0;
+	border-radius: 3rem;
+	overflow: hidden;
+	background-color: #3d3c40;
+	transform: translateY(60%);
+	opacity: 0;
+	min-height: 80rem;
+	width: 55rem;
+	animation: up 0.7s forwards;
+}
+
+@keyframes up {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

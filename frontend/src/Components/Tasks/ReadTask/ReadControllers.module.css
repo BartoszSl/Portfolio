@@ -1,0 +1,57 @@
+.read-controllers {
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border-radius: 0 0 3rem 3rem;
+	background-color: #28282a;
+	padding: 2.5rem 3.5rem;
+}
+
+.back-button {
+	position: relative;
+	font-size: 1em;
+	color: #8b8990;
+	cursor: pointer;
+	font-weight: 700;
+	transition: color 0.3s;
+}
+
+.back-button:hover {
+	color: #e0e0e0;
+}
+
+.buttons {
+	display: flex;
+	gap: 1em;
+}
+
+.buttons button {
+	width: 13rem;
+	padding: 1.3rem 0;
+	font-size: 2rem;
+	font-weight: 700;
+	border-radius: 1rem;
+	border: none;
+	color: #e0e0e0;
+	cursor: pointer;
+}
+
+.buttons .edit-button {
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+	background-color: #464548;
+}
+
+.buttons .delete-button {
+	background-color: #f23838;
+}
+
+.buttons .submit-invalid {
+	cursor: not-allowed;
+}
+
+.buttons .button-invalid {
+	cursor: not-allowed;
+}
