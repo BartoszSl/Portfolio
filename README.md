@@ -10,4 +10,4 @@ This is my sector to showcase my web development skills
 Simple Full Stack application based on React with Express and MySQL database. <br/>
 
 
-Link to project: [click](https://)
+Link to project: [click](https://github.com/BartoszSl/Portfolio/tree/main/rememberTask)
