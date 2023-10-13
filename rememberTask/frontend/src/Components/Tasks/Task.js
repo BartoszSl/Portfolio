@@ -6,13 +6,12 @@ import ChangeFormType from './ChangeFormType';
 import UserDataContext from '../../Context/userData-context';
 import CreateTask from './CreateTask/CreateTask';
 import ReadTask from './ReadTask/ReadTask';
-import EventInfo from '../UI/EventInfo';
+import Modal from '../UI/Modal';
 
 const Task = (props) => {
-	const [isCreate, setIsCreate] = useState(true);
-
 	const userCtx = useContext(UserDataContext);
 
+	const [isCreate, setIsCreate] = useState(true);
 	const [isCommunicat, setIsCommunicat] = useState(false);
 	const [communicatData, setCommunicatData] = useState(false);
 	const [number, setNumber] = useState(0);
@@ -27,16 +26,18 @@ const Task = (props) => {
 
 	const changeTaskType = () => {
 		setIsCreate(!isCreate);
-		userCtx.onChangeTaskTypeHandler();
+		userCtx.onClearHandler();
+		userCtx.onChangeTaskTypeHandler(!isCreate);
 	};
 
 	useEffect(() => {
-		if (userCtx.isEditMode) {
+		if (userCtx.isCreateMode) {
 			setIsCreate(true);
-		} else if (!userCtx.isEditMode) {
+		} else {
 			setIsCreate(false);
 		}
-	}, [userCtx.isEditMode]);
+		console.log('clicked');
+	}, [userCtx.isCreateMode]);
 
 	useEffect(() => {
 		if (userCtx.isSuccesedAdded) {
@@ -80,7 +81,7 @@ const Task = (props) => {
 				<ChangeFormType onChangeType={changeTaskType} />
 				{isCreate ? <CreateTask /> : <ReadTask />}
 			</form>
-			{isCommunicat && <EventInfo type={communicatData} number={number} />}
+			{isCommunicat && <Modal type={communicatData} number={number} />}
 		</Fragment>
 	);
 };

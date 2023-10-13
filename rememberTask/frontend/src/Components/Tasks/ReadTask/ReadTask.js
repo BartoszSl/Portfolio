@@ -27,23 +27,28 @@ const ReadTask = () => {
 
 	const deleteTaskByIdHandler = () => {
 		userCtx.onDeleteCommunicat();
-		if (selectedTaskId !== null) {
-			axios
-				.get(`http://localhost:3001/delete-taskById?id=${selectedTaskId}`)
-				.catch((error) => {
-					console.error(error);
-				});
-			setSelectedTaskId(null);
-		} else if (selectedTask.length >= 1) {
-			const ids = selectedTask.map((task) => task.id);
+		try {
+			if (selectedTaskId !== null) {
+				axios
+					.get(`http://localhost:3001/delete-taskById?id=${selectedTaskId}`)
+					.catch((error) => {
+						console.error(error);
+					});
+			} else if (selectedTask.length >= 1) {
+				const ids = selectedTask.map((task) => task.id);
+				axios
+					.post('http://localhost:3001/delete-tasksByManyId', {
+						ids: ids,
+					})
+					.catch((error) => {
+						console.error(error);
+					});
+			}
+
 			setIsDeleted(!isDeleted);
-			axios
-				.post('http://localhost:3001/delete-tasksByManyId', {
-					ids: ids,
-				})
-				.catch((error) => {
-					console.error(error);
-				});
+			setSelectedTaskId(null);
+		} catch (err) {
+			throw err;
 		}
 	};
 

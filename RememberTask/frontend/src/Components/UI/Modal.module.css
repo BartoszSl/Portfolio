@@ -10,6 +10,7 @@
 	height: 10rem;
 	border-radius: 1rem;
 	animation: seeUp 1s linear forwards;
+	z-index: 30;
 }
 
 @keyframes seeUp {
