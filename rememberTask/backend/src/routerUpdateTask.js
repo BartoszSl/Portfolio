@@ -10,6 +10,8 @@ const db = await mysql.createConnection({
 
 const updateTask = Router();
 
+const mysqlDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
 updateTask.post('/udpate-task', async (req, res) => {
 	const [task_id, newData] = req.body;
 
@@ -63,6 +65,17 @@ updateTask.post('/udpate-task', async (req, res) => {
 			newData.icon.type,
 			newData.icon.color,
 			task_id,
+		]);
+
+		const changeLog = `INSERT INTO
+		changelog (type, task_id, description, date)
+		VALUES (?, ?, ?, ?)`;
+
+		await db.execute(changeLog, [
+			'Update',
+			task_id,
+			`Updated task with id: ${task_id}`,
+			mysqlDate,
 		]);
 
 		return newData;

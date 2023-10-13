@@ -7,6 +7,8 @@ const db = await mysql.createConnection({
 	database: 'remember_task',
 });
 
+const mysqlDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
 export const deleteTaskById = async (req, res) => {
 	try {
 		const task_id = req.query.id;
@@ -18,7 +20,16 @@ export const deleteTaskById = async (req, res) => {
 		await db.query('DELETE FROM friends WHERE task_id = ?', [task_id]);
 		await db.query('DELETE FROM tasks WHERE id = ?', [task_id]);
 
-		console.log('Done');
+		const changeLog = `INSERT INTO
+		changelog (type, task_id, description, date)
+		VALUES (?, ?, ?, ?)`;
+
+		await db.execute(changeLog, [
+			'Delete',
+			task_id,
+			`Deleted task with id: ${task_id} from datebase`,
+			mysqlDate,
+		]);
 	} catch (err) {
 		console.error(err);
 		res
@@ -28,7 +39,6 @@ export const deleteTaskById = async (req, res) => {
 };
 
 export const deleteTasksByManyId = async (req, res) => {
-	console.log('Many ids');
 	try {
 		const idsToDelete = req.body.ids;
 
@@ -46,10 +56,19 @@ export const deleteTasksByManyId = async (req, res) => {
 				await db.query('DELETE FROM icon WHERE task_id = ?', [id]);
 				await db.query('DELETE FROM friends WHERE task_id = ?', [id]);
 				await db.query('DELETE FROM tasks WHERE id = ?', [id]);
+
+				const changeLog = `INSERT INTO
+				changelog (type, task_id, description, date)
+				VALUES (?, ?, ?, ?)`;
+
+				await db.execute(changeLog, [
+					'Delete',
+					id,
+					`Deleted task id: ${id} from datebase`,
+					mysqlDate,
+				]);
 			})
 		);
-
-		console.log('Done');
 		res.status(200).json({ message: 'Tablice zostały usunięte.' });
 	} catch (err) {
 		console.error(err);

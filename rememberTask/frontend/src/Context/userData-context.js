@@ -78,7 +78,6 @@ export const UserDataContextProvider = (props) => {
 	const [friendsList, setFriendsList] = useState([]);
 	const [isTitleValid, setIsTitleValid] = useState(false);
 	const [clear, setClear] = useState(false);
-	const [isEditModeOn, setIsEditModeOn] = useState(false);
 	const [isCreateMode, setIsCreateMode] = useState(true);
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [editData, setEditData] = useState([]);
@@ -354,6 +353,7 @@ export const UserDataContextProvider = (props) => {
 				onClearHandler: onClear,
 				isCleared: clear,
 				onEditMode: editFormHandler,
+				isEditMode: isEditMode,
 				isCreateMode: isCreateMode,
 				onChangeTaskTypeHandler: changeTaskTypeHandler,
 				isSuccesedAdded: isSuccesedAdded,
