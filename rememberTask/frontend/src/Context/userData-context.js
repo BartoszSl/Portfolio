@@ -79,6 +79,8 @@ export const UserDataContextProvider = (props) => {
 	const [isTitleValid, setIsTitleValid] = useState(false);
 	const [clear, setClear] = useState(false);
 	const [isEditModeOn, setIsEditModeOn] = useState(false);
+	const [isCreateMode, setIsCreateMode] = useState(true);
+	const [isEditMode, setIsEditMode] = useState(false);
 	const [editData, setEditData] = useState([]);
 
 	const [isSuccesedAdded, setIsSuccesedAdded] = useState(false);
@@ -187,11 +189,12 @@ export const UserDataContextProvider = (props) => {
 		};
 
 		if (isAllCorrect) {
-			if (!isEditModeOn) {
+			if (!isEditMode) {
 				try {
+					setIsCreateMode(true);
+
 					onClear();
 					geneCtx.onClearButton();
-
 					setIsSuccesedAdded(true);
 
 					setTimeout(() => {
@@ -215,10 +218,9 @@ export const UserDataContextProvider = (props) => {
 					console.error(err);
 				}
 			}
-			if (isEditModeOn) {
+			if (isEditMode) {
 				try {
-					setIsEditModeOn(false);
-
+					setIsCreateMode(false);
 					setIsSuccesedEdited(true);
 
 					setTimeout(() => {
@@ -248,6 +250,8 @@ export const UserDataContextProvider = (props) => {
 	};
 
 	const editFormHandler = (data) => {
+		setIsCreateMode(true);
+		setIsEditMode(true);
 		try {
 			axios
 				.get(`http://localhost:3001/select-taskToEdit?id=${data[0].id}`)
@@ -257,8 +261,6 @@ export const UserDataContextProvider = (props) => {
 				.catch((error) => {
 					console.error(error);
 				});
-
-			setIsEditModeOn(true);
 		} catch (err) {
 			console.error(err);
 		}
@@ -275,7 +277,7 @@ export const UserDataContextProvider = (props) => {
 			return betterDate;
 		};
 
-		if (isEditModeOn && editData.length > 0) {
+		if (isCreateMode && editData.length === 1) {
 			setTitle(editData[0].title);
 			setIsTitleValid(true);
 			setReminder(editData[0].reminder);
@@ -307,10 +309,13 @@ export const UserDataContextProvider = (props) => {
 					{ id: editData[0].friends_id, value: editData[0].name },
 				]);
 		}
-	}, [editData, isEditModeOn, reminder]);
+	}, [editData, isCreateMode, reminder]);
 
-	const changeTaskTypeHandler = () => {
-		setIsEditModeOn(false);
+	const changeTaskTypeHandler = (value) => {
+		setIsCreateMode(value);
+		setIsEditMode(value);
+		setEditData([]);
+		onClear();
 	};
 
 	const deleteCommunicat = () => {
@@ -349,7 +354,7 @@ export const UserDataContextProvider = (props) => {
 				onClearHandler: onClear,
 				isCleared: clear,
 				onEditMode: editFormHandler,
-				isEditMode: isEditModeOn,
+				isCreateMode: isCreateMode,
 				onChangeTaskTypeHandler: changeTaskTypeHandler,
 				isSuccesedAdded: isSuccesedAdded,
 				isSuccesedEdited: isSuccesedEdited,

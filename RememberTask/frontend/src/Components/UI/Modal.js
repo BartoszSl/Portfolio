@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
-import classes from './EventInfo.module.css';
+import { Fragment, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 
-const EventInfo = (props) => {
+import classes from './Modal.module.css';
+
+const CommunicatOverlay = (props) => {
 	const [endCommunicat, setEndComunicat] = useState(false);
 	const [backgroundColor, setBackgroundColor] = useState(true);
 
@@ -41,4 +43,15 @@ const EventInfo = (props) => {
 	);
 };
 
-export default EventInfo;
+const Modal = (props) => {
+	return (
+		<Fragment>
+			{ReactDOM.createPortal(
+				<CommunicatOverlay type={props.type} number={props.number} />,
+				document.getElementById('communicat-root')
+			)}
+		</Fragment>
+	);
+};
+
+export default Modal;
