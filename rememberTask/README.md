@@ -56,10 +56,3 @@ And on Back-end I used **Express** with **mysql2/promise**.
 
 [Link to Figma](https://www.figma.com/file/hI8sHYbvhMDrNnztbVlS8E/Untitled?node-id=0%3A1&mode=dev)
 
-## Repair List
-
-- Countdown in Title
-- re-send request to select lobby tasks after delete
-- Change communicat place to React Portal
-- Add update informations in SQL database
-- After update set form to Read type
