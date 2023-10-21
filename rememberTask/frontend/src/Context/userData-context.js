@@ -7,6 +7,7 @@ import {
 } from 'react';
 import GeneralContext from './general-context';
 import axios from 'axios';
+import useHttp from '../hooks/use-http';
 
 const UserDataContext = createContext({
 	title: null,
@@ -81,10 +82,13 @@ export const UserDataContextProvider = (props) => {
 	const [isCreateMode, setIsCreateMode] = useState(true);
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [editData, setEditData] = useState([]);
+	const [tasks, setTasks] = useState([]);
 
 	const [isSuccesedAdded, setIsSuccesedAdded] = useState(false);
 	const [isSuccesedEdited, setIsSuccesedEdited] = useState(false);
 	const [isSuccesedDeleted, setIsSuccesedDeleted] = useState(false);
+
+	const { sendRequest: requestToDataBase } = useHttp();
 
 	const addTitle = (data) => {
 		setTitle(data);
@@ -169,7 +173,7 @@ export const UserDataContextProvider = (props) => {
 		}, 500);
 	};
 
-	const sendRequestToDataBaseHandler = async () => {
+	const sendRequestToDataBaseHandler = () => {
 		const USER_DATA = {
 			title: title,
 			reminder: reminder,
@@ -200,69 +204,64 @@ export const UserDataContextProvider = (props) => {
 						setIsSuccesedAdded(false);
 					}, 6000);
 
-					axios
-						.post(
-							'http://localhost:3001/addRequest',
-							JSON.stringify(USER_DATA),
-							{
-								headers: {
-									'Content-Type': 'application/json',
-								},
-							}
-						)
-						.catch((error) => {
-							console.error(error);
-						});
+					requestToDataBase({
+						url: 'http://localhost:3001/addRequest',
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: USER_DATA,
+					});
 				} catch (err) {
 					console.error(err);
 				}
 			}
 			if (isEditMode) {
-				try {
-					setIsCreateMode(false);
-					setIsSuccesedEdited(true);
+				console.log(USER_DATA);
+				console.log(editData[0].id);
 
-					setTimeout(() => {
-						setIsSuccesedEdited(false);
-					}, 6000);
+				requestToDataBase({
+					url: 'http://localhost:3001/udpate-task',
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: [editData[0].id, USER_DATA],
+				});
 
-					axios
-						.post(
-							'http://localhost:3001/udpate-task',
-							JSON.stringify([editData[0].id, USER_DATA]),
-							{
-								headers: {
-									'Content-Type': 'application/json',
-								},
-							}
-						)
-						.catch((error) => {
-							console.error(error);
-						});
-				} catch (err) {
-					console.error(err);
-				}
+				setIsCreateMode(false);
+				setIsEditMode(false);
+				setIsSuccesedEdited(true);
+
+				setTimeout(() => {
+					setIsSuccesedEdited(false);
+				}, 6000);
 			}
 		} else {
 			console.error('Incorecct Data.');
 		}
 	};
 
+	console.log(isEditMode);
+
 	const editFormHandler = (data) => {
+		const transformTasks = (tasksObj) => {
+			const loadedTasks = [];
+
+			for (const taskKey in tasksObj) {
+				loadedTasks.push(tasksObj[taskKey]);
+			}
+
+			setEditData(loadedTasks);
+		};
+
+		requestToDataBase(
+			{
+				url: `http://localhost:3001/select-taskToEdit?id=${data[0].id}`,
+			},
+			transformTasks
+		);
+
 		setIsCreateMode(true);
 		setIsEditMode(true);
-		try {
-			axios
-				.get(`http://localhost:3001/select-taskToEdit?id=${data[0].id}`)
-				.then((response) => {
-					setEditData(response.data);
-				})
-				.catch((error) => {
-					console.error(error);
-				});
-		} catch (err) {
-			console.error(err);
-		}
 	};
 
 	useEffect(() => {

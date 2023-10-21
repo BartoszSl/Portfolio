@@ -1,25 +1,35 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import classes from './LobbyTasks.module.css';
-import axios from 'axios';
+import useHttp from '../../../../hooks/use-http';
 
 const LobbyTasks = (props) => {
-	const [dataBaseData, setDateBaseData] = useState([]);
+	const [dataBaseData, setDateBaseData] = useState(props.tasks);
 	const [selectedTasks, setSelectedTasks] = useState([]);
 
-	const requestToDataBase = () => {
-		axios
-			.get('http://localhost:3001/select-lobby')
-			.then((response) => {
-				setDateBaseData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	};
+	const { sendRequest: fetchTasks } = useHttp();
+
+	const requestToDataBase = useCallback(() => {
+		const transformTasks = (tasksObj) => {
+			const loadedTasks = [];
+
+			for (const taskKey in tasksObj) {
+				loadedTasks.push(tasksObj[taskKey]);
+			}
+
+			setDateBaseData(loadedTasks);
+		};
+
+		fetchTasks(
+			{
+				url: 'http://localhost:3001/select-lobby',
+			},
+			transformTasks
+		);
+	}, [fetchTasks]);
 
 	useEffect(() => {
 		requestToDataBase();
-	}, [props.isDeleted]);
+	}, [requestToDataBase]);
 
 	const refreshHandler = () => {
 		requestToDataBase();

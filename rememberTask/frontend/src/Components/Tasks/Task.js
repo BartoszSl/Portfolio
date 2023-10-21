@@ -26,16 +26,16 @@ const Task = (props) => {
 
 	const changeTaskType = () => {
 		setIsCreate(!isCreate);
-		userCtx.onChangeTaskTypeHandler(!isCreate);
+		if (userCtx.isEditMode) {
+			userCtx.onChangeTaskTypeHandler(!isCreate);
+		}
 	};
 
 	useEffect(() => {
-		if (userCtx.isEditMode) {
-			if (userCtx.isCreateMode) {
-				setIsCreate(true);
-			} else {
-				setIsCreate(false);
-			}
+		if (userCtx.isCreateMode) {
+			setIsCreate(true);
+		} else {
+			setIsCreate(false);
 		}
 	}, [userCtx.isCreateMode, userCtx.isEditMode]);
 

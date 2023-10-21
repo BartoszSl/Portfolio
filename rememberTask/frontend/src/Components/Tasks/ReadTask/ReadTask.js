@@ -3,8 +3,8 @@ import classes from './ReadTask.module.css';
 import ReadControllers from './ReadControllers';
 import LobbyTasks from './TasksCentrum/LobbyTasks';
 import AllTask from './TasksCentrum/AllTask';
-import axios from 'axios';
 import UserDataContext from '../../../Context/userData-context';
+import useHttp from '../../../hooks/use-http';
 
 const ReadTask = () => {
 	const userCtx = useContext(UserDataContext);
@@ -12,6 +12,9 @@ const ReadTask = () => {
 	const [selectedTask, setSelectedTask] = useState([]);
 	const [selectedTaskId, setSelectedTaskId] = useState(null);
 	const [isDeleted, setIsDeleted] = useState(false);
+	const [tasks, setTasks] = useState([]);
+
+	const { sendRequest: deleteTask } = useHttp();
 
 	const onSetSelectedTaskHandler = (value) => {
 		setSelectedTask(value);
@@ -27,27 +30,38 @@ const ReadTask = () => {
 
 	const deleteTaskByIdHandler = () => {
 		userCtx.onDeleteCommunicat();
-		try {
-			if (selectedTaskId !== null) {
-				axios
-					.get(`http://localhost:3001/delete-taskById?id=${selectedTaskId}`)
-					.catch((error) => {
-						console.error(error);
-					});
-				setSelectedTaskId(null);
-			} else if (selectedTask.length >= 1) {
-				const ids = selectedTask.map((task) => task.id);
-				setIsDeleted(!isDeleted);
-				axios
-					.post('http://localhost:3001/delete-tasksByManyId', {
-						ids: ids,
-					})
-					.catch((error) => {
-						console.error(error);
-					});
+
+		const transformTasks = (tasksObj) => {
+			const loadedTasks = [];
+
+			for (const taskKey in tasksObj) {
+				loadedTasks.push(tasksObj[taskKey]);
 			}
-		} catch (err) {
-			throw err;
+
+			setTasks(loadedTasks);
+		};
+
+		if (selectedTaskId !== null) {
+			deleteTask(
+				{
+					url: `http://localhost:3001/delete-taskById?id=${selectedTaskId}`
+				},
+				transformTasks
+			);
+			setSelectedTaskId(null);
+		} else if (selectedTask.length >= 1) {
+			const ids = selectedTask.map((task) => task.id);
+			setIsDeleted(!isDeleted);
+
+			deleteTask(
+				{
+					url: 'http://localhost:3001/delete-tasksByManyId',
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: ids,
+				},
+				transformTasks
+			);
 		}
 	};
 
@@ -60,6 +74,7 @@ const ReadTask = () => {
 						isSelectedTask={selectedTask}
 						onSetSelectedTask={onSetSelectedTaskHandler}
 						onDoubleSelectedTask={onSetDoubleSelectedTaskHandler}
+						tasks={tasks}
 					/>
 				) : (
 					<AllTask task_id={selectedTaskId} />

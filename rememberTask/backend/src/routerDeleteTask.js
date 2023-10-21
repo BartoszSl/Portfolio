@@ -40,7 +40,7 @@ export const deleteTaskById = async (req, res) => {
 
 export const deleteTasksByManyId = async (req, res) => {
 	try {
-		const idsToDelete = req.body.ids;
+		const idsToDelete = req.body;
 
 		if (
 			!idsToDelete ||

@@ -42,6 +42,19 @@ const TaskTitle = (props) => {
 	};
 
 	useEffect(() => {
+		if (userCtx.isEditMode) {
+			const letters = 50 - userCtx.title.length;
+			setAvailableLetters(letters);
+
+			dispatchTitle({
+				type: 'USER_INPUT',
+				val: userCtx.title,
+				letters: letters,
+			});
+		}
+	}, [userCtx.isEditMode, userCtx.title, userCtx.title.length]);
+
+	useEffect(() => {
 		dispatchTitle({ type: 'CLEAR' });
 	}, [userCtx.isCleared]);
 
