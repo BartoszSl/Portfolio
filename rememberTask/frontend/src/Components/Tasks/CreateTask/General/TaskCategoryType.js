@@ -1,39 +1,55 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import RadioInput from '../../../UI/RadioInput';
 
 import './Colors&icons.css';
 import classes from './TaskCategoryType.module.css';
 import UserDataContext from '../../../../Context/userData-context';
+import useHttp from '../../../../hooks/use-http';
 
-const categoryList = [
-	{ id: 'dinner' },
-	{ id: 'game' },
-	{ id: 'sport' },
-	{ id: 'outside' },
-	{ id: 'shopping' },
-];
-
-const findCategoryId = (category) => {
-	for (let i = 0; i < categoryList.length; i++) {
-		if (categoryList[i].id === category) {
-			return categoryList[i].id;
-		}
-	}
-};
+let canSend = false;
 
 const TaskCategoryType = (props) => {
-	const userCtx = useContext(UserDataContext);
-	const [selectedValue, setSelectedValue] = useState(
-		findCategoryId(userCtx.category)
-	);
+	const [categoryList, setCategoryList] = useState([]);
 
-	const [blockEffect, setBlockEffect] = useState(false);
+	const userCtx = useContext(UserDataContext);
+	const [selectedValue, setSelectedValue] = useState(userCtx.category);
+
+	const { sendRequest: fetchCategories } = useHttp();
+
+	const requestToDataBase = useCallback(() => {
+		const transformTasks = (tasksObj) => {
+			const loadedCategories = [];
+
+			for (const taskKey in tasksObj) {
+				loadedCategories.push({
+					key: tasksObj[taskKey].id,
+					id: tasksObj[taskKey].categoryId,
+				});
+			}
+
+			setCategoryList(loadedCategories);
+		};
+
+		fetchCategories(
+			{
+				url: 'http://localhost:3001/select-categories',
+			},
+			transformTasks
+		);
+	}, [fetchCategories]);
 
 	useEffect(() => {
-		if (!blockEffect) {
-			userCtx.onAddCategory(selectedValue);
+		requestToDataBase();
+	}, [requestToDataBase]);
+
+	useEffect(() => {
+		if (!canSend) {
+			canSend = true;
+			return;
 		}
-	}, [blockEffect, selectedValue, userCtx]);
+
+		userCtx.onAddCategory(selectedValue);
+	}, [selectedValue, userCtx]);
 
 	const handleRadioChange = (e) => {
 		setSelectedValue(e.target.id);
@@ -44,11 +60,6 @@ const TaskCategoryType = (props) => {
 			setSelectedValue('dinner');
 		}
 	}, [userCtx.isCleared]);
-
-	useEffect(() => {
-		setSelectedValue(findCategoryId(userCtx.category));
-		setBlockEffect(true);
-	}, [userCtx.category]);
 
 	return (
 		<div

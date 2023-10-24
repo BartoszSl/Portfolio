@@ -82,7 +82,6 @@ export const UserDataContextProvider = (props) => {
 	const [isCreateMode, setIsCreateMode] = useState(true);
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [editData, setEditData] = useState([]);
-	const [tasks, setTasks] = useState([]);
 
 	const [isSuccesedAdded, setIsSuccesedAdded] = useState(false);
 	const [isSuccesedEdited, setIsSuccesedEdited] = useState(false);

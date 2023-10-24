@@ -1,21 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import classes from './TaskColor.module.css';
 
 import './Colors&icons.css';
 import RadioInput from '../../../UI/RadioInput';
 import UserDataContext from '../../../../Context/userData-context';
+import useHttp from '../../../../hooks/use-http';
 
-const colorsList = [
-	{ id: 'light-blue', color: '#83b8df' },
-	{ id: 'orange', color: '#ff8c00' },
-	{ id: 'pink', color: '#ff5964' },
-	{ id: 'green', color: '#59b90e' },
-	{ id: 'cyan', color: '#14aeae' },
-	{ id: 'magenta', color: '#ac7dd2' },
-	{ id: 'violet', color: '#6562fc' },
-];
-
-function rgbToHex(rgb) {
+const rgbToHex = (rgb) => {
 	const rgbValues = rgb.slice(4, -1).split(', ').map(Number);
 
 	const hexColor =
@@ -28,17 +19,21 @@ function rgbToHex(rgb) {
 			.join('');
 
 	return hexColor;
-}
-
-const findSelectedColorId = (mainColor) => {
-	for (let i = 0; i < colorsList.length; i++) {
-		if (colorsList[i].color === mainColor) {
-			return colorsList[i].id;
-		}
-	}
 };
 
 const TaskColor = (props) => {
+	const [colorsList, setColorsList] = useState([]);
+
+	const findSelectedColorId = useCallback(
+		(mainColor) => {
+			for (let i = 0; i < colorsList.length; i++) {
+				if (colorsList[i].color === mainColor) {
+					return colorsList[i].id;
+				}
+			}
+		},
+		[colorsList]
+	);
 	const userCtx = useContext(UserDataContext);
 
 	const [color, setColor] = useState(userCtx.mainColor);
@@ -46,6 +41,35 @@ const TaskColor = (props) => {
 		findSelectedColorId(userCtx.mainColor)
 	);
 	const [blockEffect, setBlockEffect] = useState(false);
+
+	const { sendRequest: fetchColors } = useHttp();
+
+	const requestToDataBase = useCallback(() => {
+		const transformTasks = (tasksObj) => {
+			const loadedTasks = [];
+
+			for (const taskKey in tasksObj) {
+				loadedTasks.push({
+					key: tasksObj[taskKey].id,
+					id: tasksObj[taskKey].colorId,
+					color: tasksObj[taskKey].colorHex,
+				});
+			}
+
+			setColorsList(loadedTasks);
+		};
+
+		fetchColors(
+			{
+				url: 'http://localhost:3001/select-colors',
+			},
+			transformTasks
+		);
+	}, [fetchColors]);
+
+	useEffect(() => {
+		requestToDataBase();
+	}, [requestToDataBase]);
 
 	useEffect(() => {
 		if (!blockEffect) {
@@ -73,7 +97,7 @@ const TaskColor = (props) => {
 		setSelectedValue(findSelectedColorId(userCtx.mainColor));
 		setColor(userCtx.mainColor);
 		setBlockEffect(true);
-	}, [userCtx.mainColor]);
+	}, [findSelectedColorId, userCtx.mainColor]);
 
 	return (
 		<div
