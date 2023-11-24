@@ -1,0 +1,93 @@
+@use '../../colors' as c;
+
+.login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-image: url('../../imgs/background.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	&--form {
+		position: relative;
+		padding: 4rem 3rem 0;
+		color: c.$white;
+		width: 30rem;
+		height: 45rem;
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.2) 0%,
+			rgba(255, 255, 255, 0.1) 100%
+		);
+		box-shadow: 0px 0.4rem 2.4rem -0.1rem c.$blackShadow;
+		backdrop-filter: blur(2rem);
+
+		// border-inline-start: 3px solid;
+		// border-block-start: 3px solid;
+		// border-image-source: radial-gradient(
+		// 	circle at top left,
+		// 	#ffffff,
+		// 	transparent 50%
+		// );
+
+		border: 0.3rem solid c.$white;
+		border-radius: 1.5rem;
+		border-image-slice: 1;
+		z-index: 1;
+
+		h2 {
+			font-size: 2rem;
+			font-weight: 500;
+			text-align: center;
+		}
+		p {
+			margin-top: 0.5rem;
+			color: c.$pink;
+			font-weight: 400;
+			font-size: 1.2rem;
+			text-align: center;
+		}
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			margin: 2.5rem 0;
+		}
+		hr {
+			margin: 2rem 0;
+			border: 1px solid c.$grey;
+			border-radius: 0.5rem;
+		}
+		button[type='submit'] {
+			color: c.$white;
+			font-size: 1.8rem;
+			font-weight: 700;
+		}
+		button[type='button'] {
+			color: c.$grey;
+			background-color: c.$blackShadow;
+			border: 1px solid c.$white;
+			font-size: 1.2rem;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.login--form {
+		padding-top: 3.5rem;
+		position: absolute;
+		right: 15rem;
+		h2,
+		p {
+			text-align: left;
+		}
+		.inputs {
+			gap: 3rem;
+		}
+		button[type='button'] {
+			font-size: 1rem;
+			padding: 1.5rem 0;
+		}
+	}
+}

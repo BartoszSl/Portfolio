@@ -1,0 +1,9 @@
+@use './colors' as c;
+
+.orange-text {
+	color: c.$orangeColor;
+}
+
+.orange-background {
+	background-color: c.$orangeColor;
+}

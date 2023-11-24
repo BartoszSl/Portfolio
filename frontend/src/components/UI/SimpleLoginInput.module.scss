@@ -1,0 +1,32 @@
+@use '../../colors' as c;
+
+.input-label {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	.labels {
+		display: flex;
+		justify-content: space-between;
+		label {
+			font-size: 1.2rem;
+			color: c.$grey;
+		}
+		span {
+			font-size: 1.1rem;
+			color: c.$orangeColor;
+		}
+	}
+	input {
+		font-size: 1.6rem;
+		padding: 1rem;
+		border: 1px solid c.$grey;
+		border-radius: 0.5rem;
+		background-color: rgba(255, 255, 255, 0.4);
+	}
+}
+
+@media (min-width: 1200px) {
+	.input-label {
+		gap: 1rem;
+	}
+}

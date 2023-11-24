@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.6rem;
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 80%;
+	}
+}
+
+@media (min-width: 992px) {
+	html {
+		font-size: 90%;
+	}
+}
+
+@media (min-width: 1200px) {
+	html {
+		font-size: 100%;
+	}
+}
